@@ -1,0 +1,544 @@
+/* =========================================================
+   이윤호 포트폴리오 — 디자인 토큰 & 스타일
+   (원본 index_1.html 의 <style> 블록에서 그대로 옮김)
+   ========================================================= */
+
+/* =========================================================
+     토큰 — 라이트(기본) / 다크
+     ========================================================= */
+  :root {
+    --paper: #efeee5;
+    --paper-raised: #f8f7f1;
+    --ink: #1c1b17;
+    --ink-soft: #59564b;
+    --ink-faint: #8b8778;
+    --rule: #d8d4c4;
+    --rule-strong: #b9b49f;
+    --accent: #a8391d;
+    --accent-ink: #ffffff;
+    --accent-soft: #ecdcd1;
+    --accent-soft-ink: #7c2c15;
+    --shadow: rgba(28, 27, 23, 0.08);
+
+    --font-serif: "Source Serif 4", "Noto Serif KR", Georgia, "Times New Roman", serif;
+    --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+    --measure: 62ch;
+    --content-width: 780px;
+    --gutter-width: 132px;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #171613;
+      --paper-raised: #201f1a;
+      --ink: #eeeade;
+      --ink-soft: #b6b09e;
+      --ink-faint: #7d7768;
+      --rule: #3a382e;
+      --rule-strong: #4e4b3c;
+      --accent: #e0723f;
+      --accent-ink: #171613;
+      --accent-soft: #3a2a20;
+      --accent-soft-ink: #f0b191;
+      --shadow: rgba(0, 0, 0, 0.35);
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --paper: #171613;
+    --paper-raised: #201f1a;
+    --ink: #eeeade;
+    --ink-soft: #b6b09e;
+    --ink-faint: #7d7768;
+    --rule: #3a382e;
+    --rule-strong: #4e4b3c;
+    --accent: #e0723f;
+    --accent-ink: #171613;
+    --accent-soft: #3a2a20;
+    --accent-soft-ink: #f0b191;
+    --shadow: rgba(0, 0, 0, 0.35);
+  }
+
+  /* =========================================================
+     리셋 / 베이스
+     ========================================================= */
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--font-serif);
+    font-size: 17px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+  }
+  h1, h2, h3 { text-wrap: balance; font-weight: 600; }
+  p { text-wrap: pretty; }
+  a { color: inherit; }
+  ::selection { background: var(--accent-soft); color: var(--accent-soft-ink); }
+
+  .shell {
+    max-width: calc(var(--content-width) + var(--gutter-width) + 64px);
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* =========================================================
+     헤더
+     ========================================================= */
+  .masthead {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: color-mix(in srgb, var(--paper) 88%, transparent);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--rule);
+  }
+  .masthead-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 16px 0;
+    flex-wrap: wrap;
+  }
+  .wordmark {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-mono);
+    font-weight: 600;
+    font-size: 0.95rem;
+    letter-spacing: 0.02em;
+    text-decoration: none;
+  }
+  .wordmark .tally {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex: none;
+  }
+  .masthead-nav {
+    display: flex;
+    gap: 22px;
+    flex-wrap: wrap;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    letter-spacing: 0.04em;
+  }
+  .masthead-nav a {
+    text-decoration: none;
+    color: var(--ink-soft);
+    padding-bottom: 3px;
+    border-bottom: 1px solid transparent;
+    transition: color 0.15s ease, border-color 0.15s ease;
+  }
+  .masthead-nav a:hover,
+  .masthead-nav a.is-active {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+  }
+
+  /* =========================================================
+     히어로
+     ========================================================= */
+  .hero {
+    padding: 72px 0 56px;
+  }
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 0.74rem;
+    font-weight: 500;
+    letter-spacing: 0.09em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin: 0 0 22px;
+  }
+  .hero h1 {
+    margin: 0 0 8px;
+    font-size: clamp(2.6rem, 6vw, 3.8rem);
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+  }
+  .hero .en-name {
+    display: block;
+    font-family: var(--font-mono);
+    font-weight: 500;
+    font-size: 1.05rem;
+    color: var(--ink-faint);
+    letter-spacing: 0.03em;
+    margin-top: 10px;
+  }
+  .hero-desc {
+    max-width: var(--measure);
+    color: var(--ink-soft);
+    font-size: 1.08rem;
+    margin: 26px 0 0;
+  }
+
+  /* 필름 룰러 — 장식용 프레임 카운터 그래픽 */
+  .filmruler {
+    margin-top: 40px;
+    padding-top: 18px;
+    border-top: 1px solid var(--rule);
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    color: var(--ink-faint);
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.06em;
+  }
+  .filmruler .rec {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--accent);
+    flex: none;
+  }
+  .filmruler .rec .tally {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+  .filmruler .ticks {
+    flex: 1 1 auto;
+    height: 14px;
+    background-image: repeating-linear-gradient(
+      to right,
+      var(--rule-strong) 0,
+      var(--rule-strong) 1px,
+      transparent 1px,
+      transparent 12px
+    );
+    background-position: bottom;
+    background-size: 100% 8px;
+    background-repeat: repeat-x;
+  }
+  .filmruler .label {
+    flex: none;
+    white-space: nowrap;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 28px;
+    flex-wrap: wrap;
+    margin-top: 30px;
+  }
+  .text-link {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 6px;
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    letter-spacing: 0.03em;
+    text-decoration: none;
+    color: var(--ink);
+    padding-bottom: 2px;
+    border-bottom: 1px solid var(--rule-strong);
+    transition: color 0.15s ease, border-color 0.15s ease;
+  }
+  .text-link:hover { color: var(--accent); border-color: var(--accent); }
+  .text-link .arrow { transition: transform 0.15s ease; }
+  .text-link:hover .arrow { transform: translateX(3px); }
+
+  /* =========================================================
+     섹션 공통 — 여백 주석(gutter) 레이아웃
+     ========================================================= */
+  .section {
+    padding: 64px 0;
+    border-top: 1px solid var(--rule);
+  }
+  .section-inner {
+    display: grid;
+    grid-template-columns: var(--gutter-width) minmax(0, 1fr);
+    gap: 40px;
+  }
+  .section-mark {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    color: var(--ink-faint);
+    padding-top: 6px;
+  }
+  .section-mark .glyph { color: var(--accent); margin-right: 6px; }
+  .section h2 {
+    margin: 0 0 32px;
+    font-size: 1.7rem;
+    letter-spacing: -0.005em;
+  }
+
+  /* =========================================================
+     소개
+     ========================================================= */
+  .about-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 260px;
+    gap: 44px;
+    align-items: start;
+  }
+  .about-copy p {
+    color: var(--ink-soft);
+    max-width: var(--measure);
+    margin: 0 0 18px;
+  }
+  .about-copy p:last-child { margin-bottom: 0; }
+
+  /* 슬레이트(클래퍼보드) 스타일 정보 카드 */
+  .slate {
+    background: var(--paper-raised);
+    border: 1px solid var(--rule);
+    position: relative;
+  }
+  .slate::before {
+    content: "";
+    display: block;
+    height: 10px;
+    background: repeating-linear-gradient(
+      -45deg,
+      var(--ink) 0,
+      var(--ink) 10px,
+      var(--paper-raised) 10px,
+      var(--paper-raised) 20px
+    );
+    opacity: 0.85;
+  }
+  .slate dl { margin: 0; padding: 20px 22px 22px; }
+  .slate .field { margin-bottom: 18px; }
+  .slate .field:last-child { margin-bottom: 0; }
+  .slate dt {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.07em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 5px;
+  }
+  .slate dd {
+    margin: 0;
+    font-size: 0.92rem;
+    color: var(--ink);
+    line-height: 1.55;
+  }
+
+  /* =========================================================
+     인덱스 카드 (연구 / 프로젝트) — 뷰파인더 코너 모티프
+     ========================================================= */
+  .card-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+  }
+  .idx-card {
+    position: relative;
+    padding: 26px 26px 24px;
+    background: var(--paper-raised);
+  }
+  .idx-card::before,
+  .idx-card::after {
+    content: "";
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    border-color: var(--rule-strong);
+    transition: border-color 0.15s ease, width 0.15s ease, height 0.15s ease;
+  }
+  .idx-card::before {
+    top: 0; left: 0;
+    border-top: 1.5px solid var(--rule-strong);
+    border-left: 1.5px solid var(--rule-strong);
+  }
+  .idx-card::after {
+    bottom: 0; right: 0;
+    border-bottom: 1.5px solid var(--rule-strong);
+    border-right: 1.5px solid var(--rule-strong);
+  }
+  .idx-card:hover::before,
+  .idx-card:hover::after {
+    border-color: var(--accent);
+    width: 22px;
+    height: 22px;
+  }
+  .idx-tag {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--accent-soft-ink);
+    background: var(--accent-soft);
+    padding: 4px 9px;
+    margin-bottom: 16px;
+  }
+  .idx-card h3 {
+    margin: 0 0 12px;
+    font-size: 1.12rem;
+    line-height: 1.4;
+  }
+  .idx-card p {
+    margin: 0 0 12px;
+    color: var(--ink-soft);
+    font-size: 0.95rem;
+  }
+  .idx-card p:last-child { margin-bottom: 0; }
+  .idx-card .idx-role {
+    font-family: var(--font-mono);
+    font-size: 0.76rem;
+    color: var(--ink-faint);
+    letter-spacing: 0.02em;
+  }
+  .idx-card .note {
+    margin-top: 14px;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--ink-faint);
+    border-left: 2px solid var(--rule-strong);
+    padding-left: 10px;
+  }
+
+  /* =========================================================
+     저서
+     ========================================================= */
+  .pub-feature {
+    display: grid;
+    grid-template-columns: 200px minmax(0, 1fr);
+    gap: 40px;
+    align-items: start;
+  }
+  .pub-cover {
+    width: 100%;
+    border: 1px solid var(--rule);
+    box-shadow: 0 18px 32px var(--shadow);
+  }
+  .pub-cover img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  .pub-body .idx-tag { margin-bottom: 14px; }
+  .pub-body h3 {
+    margin: 0 0 6px;
+    font-size: 1.25rem;
+    line-height: 1.4;
+  }
+  .pub-author {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--ink-faint);
+    letter-spacing: 0.03em;
+    margin: 0 0 20px;
+  }
+  .pub-body p.pub-desc {
+    color: var(--ink-soft);
+    max-width: var(--measure);
+    margin: 0 0 16px;
+  }
+  .pub-body p.pub-desc:last-child { margin-bottom: 0; }
+
+  /* =========================================================
+     수상 · 자격증
+     ========================================================= */
+  .credential-list {
+    display: flex;
+    flex-direction: column;
+  }
+  .credential-item {
+    display: grid;
+    grid-template-columns: 128px minmax(0, 1fr) auto;
+    gap: 16px;
+    align-items: baseline;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .credential-item:first-child { padding-top: 0; }
+  .credential-item:last-child { border-bottom: none; }
+  .credential-tag {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--accent-soft-ink);
+    background: var(--accent-soft);
+    padding: 3px 8px;
+    display: inline-block;
+    width: fit-content;
+  }
+  .credential-title {
+    font-size: 0.98rem;
+    color: var(--ink);
+  }
+  .credential-meta {
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    color: var(--ink-faint);
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* =========================================================
+     연락처
+     ========================================================= */
+  .contact-block {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 20px;
+  }
+  .contact-copy { color: var(--ink-soft); max-width: 44ch; margin: 0; }
+  .contact-email {
+    font-family: var(--font-mono);
+    font-size: 1.15rem;
+    font-weight: 500;
+    text-decoration: none;
+    color: var(--ink);
+    border-bottom: 1.5px solid var(--accent);
+    padding-bottom: 2px;
+  }
+  .contact-email:hover { color: var(--accent); }
+
+  /* =========================================================
+     푸터
+     ========================================================= */
+  .credits {
+    padding: 28px 0 48px;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--ink-faint);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  /* =========================================================
+     반응형
+     ========================================================= */
+  @media (max-width: 760px) {
+    .section-inner { grid-template-columns: 1fr; gap: 14px; }
+    .section-mark { padding-top: 0; }
+    .about-layout { grid-template-columns: 1fr; }
+    .pub-feature { grid-template-columns: 1fr; }
+    .pub-cover { max-width: 220px; }
+    .credential-item { grid-template-columns: 1fr; gap: 4px; }
+    .credential-meta { order: 3; }
+  }
+
+  @media (max-width: 480px) {
+    body { font-size: 16px; }
+    .hero { padding: 48px 0 40px; }
+    .section { padding: 48px 0; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; }
+  }
