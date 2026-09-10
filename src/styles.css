@@ -7,18 +7,19 @@
      토큰 — 라이트(기본) / 다크
      ========================================================= */
   :root {
-    --paper: #efeee5;
-    --paper-raised: #f8f7f1;
-    --ink: #1c1b17;
-    --ink-soft: #59564b;
-    --ink-faint: #8b8778;
-    --rule: #d8d4c4;
-    --rule-strong: #b9b49f;
-    --accent: #a8391d;
-    --accent-ink: #ffffff;
-    --accent-soft: #ecdcd1;
-    --accent-soft-ink: #7c2c15;
-    --shadow: rgba(28, 27, 23, 0.08);
+    /* 세피아 — 빛바랜 인화지 톤 */
+    --paper: #ded0ac;
+    --paper-raised: #e7dcbe;
+    --ink: #2a1e10;
+    --ink-soft: #574227;
+    --ink-faint: #8a7150;
+    --rule: #c3ac81;
+    --rule-strong: #a2854f;
+    --accent: #7c2c16;
+    --accent-ink: #f1e6cf;
+    --accent-soft: #cdb488;
+    --accent-soft-ink: #55200f;
+    --shadow: rgba(46, 30, 12, 0.24);
 
     --font-serif: "Source Serif 4", "Noto Serif KR", Georgia, "Times New Roman", serif;
     --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
@@ -30,43 +31,44 @@
 
   @media (prefers-color-scheme: dark) {
     :root:not([data-theme="light"]) {
-      --paper: #171613;
-      --paper-raised: #201f1a;
-      --ink: #eeeade;
-      --ink-soft: #b6b09e;
-      --ink-faint: #7d7768;
-      --rule: #3a382e;
-      --rule-strong: #4e4b3c;
-      --accent: #e0723f;
-      --accent-ink: #171613;
-      --accent-soft: #3a2a20;
-      --accent-soft-ink: #f0b191;
-      --shadow: rgba(0, 0, 0, 0.35);
+      /* 세피아 느와르 — 그을린 갈색 어둠 */
+      --paper: #17110a;
+      --paper-raised: #211910;
+      --ink: #e4d3b2;
+      --ink-soft: #b09876;
+      --ink-faint: #796141;
+      --rule: #3d3120;
+      --rule-strong: #574733;
+      --accent: #c05730;
+      --accent-ink: #17110a;
+      --accent-soft: #3a2614;
+      --accent-soft-ink: #e6b389;
+      --shadow: rgba(0, 0, 0, 0.55);
     }
   }
 
   :root[data-theme="dark"] {
-    --paper: #171613;
-    --paper-raised: #201f1a;
-    --ink: #eeeade;
-    --ink-soft: #b6b09e;
-    --ink-faint: #7d7768;
-    --rule: #3a382e;
-    --rule-strong: #4e4b3c;
-    --accent: #e0723f;
-    --accent-ink: #171613;
-    --accent-soft: #3a2a20;
-    --accent-soft-ink: #f0b191;
-    --shadow: rgba(0, 0, 0, 0.35);
+    --paper: #17110a;
+    --paper-raised: #211910;
+    --ink: #e4d3b2;
+    --ink-soft: #b09876;
+    --ink-faint: #796141;
+    --rule: #3d3120;
+    --rule-strong: #574733;
+    --accent: #c05730;
+    --accent-ink: #17110a;
+    --accent-soft: #3a2614;
+    --accent-soft-ink: #e6b389;
+    --shadow: rgba(0, 0, 0, 0.55);
   }
 
   /* =========================================================
      리셋 / 베이스
      ========================================================= */
   * { box-sizing: border-box; }
+  html { background: var(--paper); }
   body {
     margin: 0;
-    background: var(--paper);
     color: var(--ink);
     font-family: var(--font-serif);
     font-size: 17px;
@@ -74,11 +76,70 @@
     -webkit-font-smoothing: antialiased;
     word-break: keep-all;
     overflow-wrap: break-word;
+    position: relative;
+    /* 세피아 바탕 — 얼룩진 인화지 */
+    background-color: var(--paper);
+    background-image:
+      radial-gradient(
+        ellipse 90% 55% at 50% -8%,
+        color-mix(in srgb, var(--paper-raised) 85%, #fff) 0%,
+        transparent 60%
+      ),
+      radial-gradient(
+        ellipse 120% 80% at 80% 120%,
+        color-mix(in srgb, var(--accent) 22%, transparent) 0%,
+        transparent 55%
+      ),
+      radial-gradient(
+        ellipse 100% 70% at 10% 40%,
+        color-mix(in srgb, #1c0f04 30%, transparent) 0%,
+        transparent 60%
+      );
+    background-attachment: fixed;
+  }
+  /* 필름 그레인 — 화면 전체에 깔리는 노이즈 */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: -50%;
+    z-index: 9998;
+    pointer-events: none;
+    opacity: 0.4;
+    mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    animation: grain-drift 0.7s steps(2) infinite;
+  }
+  /* 비네트 — 가장자리로 갈수록 그을린 어둠 */
+  body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    pointer-events: none;
+    mix-blend-mode: multiply;
+    background: radial-gradient(
+      ellipse 75% 75% at 50% 42%,
+      transparent 40%,
+      color-mix(in srgb, #170c02 55%, transparent) 100%
+    );
+  }
+  @keyframes grain-drift {
+    0%   { transform: translate(0, 0); }
+    25%  { transform: translate(-3%, 2%); }
+    50%  { transform: translate(2%, -4%); }
+    75%  { transform: translate(-2%, -1%); }
+    100% { transform: translate(3%, 3%); }
   }
   h1, h2, h3 { text-wrap: balance; font-weight: 600; }
+  h1, h2 {
+    /* 인쇄 어긋남 — 미세한 색분해 */
+    text-shadow:
+      0.5px 0 0 color-mix(in srgb, var(--accent) 32%, transparent),
+      -0.5px 0 0 color-mix(in srgb, #0d3b3b 22%, transparent);
+  }
   p { text-wrap: pretty; }
   a { color: inherit; }
-  ::selection { background: var(--accent-soft); color: var(--accent-soft-ink); }
+  ::selection { background: var(--accent); color: var(--accent-ink); }
 
   .shell {
     max-width: calc(var(--content-width) + var(--gutter-width) + 64px);
@@ -415,14 +476,24 @@
     align-items: start;
   }
   .pub-cover {
+    display: block;
     width: 100%;
     border: 1px solid var(--rule);
     box-shadow: 0 18px 32px var(--shadow);
+    overflow: hidden;
+    cursor: pointer;
   }
   .pub-cover img {
     display: block;
     width: 100%;
     height: auto;
+    transition: transform 0.35s ease, filter 0.35s ease;
+    filter: sepia(0.45) contrast(1.08) brightness(0.94) saturate(0.85);
+  }
+  .pub-cover:hover img,
+  .pub-cover:focus-visible img {
+    transform: scale(1.05);
+    filter: sepia(0.12) contrast(1.08) brightness(1);
   }
   .pub-body .idx-tag { margin-bottom: 14px; }
   .pub-body h3 {
@@ -518,6 +589,80 @@
     justify-content: space-between;
     flex-wrap: wrap;
     gap: 8px;
+  }
+
+  /* =========================================================
+     세피아 그로테스크 — 낡음 / 불온함 질감
+     ========================================================= */
+  /* 섹션 구분선을 닳은 이중선으로 */
+  .section {
+    border-top: none;
+    background-image:
+      repeating-linear-gradient(
+        to right,
+        var(--rule-strong) 0 7px,
+        transparent 7px 13px
+      ),
+      linear-gradient(to right, var(--rule), var(--rule));
+    background-repeat: no-repeat;
+    background-size: 100% 1px, 100% 1px;
+    background-position: 0 0, 0 3px;
+  }
+
+  /* 헤더 — 더 탁하고 눌린 느낌 */
+  .masthead {
+    background: color-mix(in srgb, var(--paper) 82%, transparent);
+    border-bottom: 1px solid var(--rule-strong);
+    box-shadow: 0 1px 0 var(--paper-raised), 0 10px 24px -12px var(--shadow);
+  }
+
+  /* 아이브로 / 모노 라벨을 더 거칠게 */
+  .eyebrow,
+  .section-mark {
+    filter: contrast(1.1);
+  }
+
+  /* REC · 워드마크 점 — 불규칙하게 깜빡이는 신호등 */
+  .filmruler .rec .tally,
+  .wordmark .tally {
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent) 70%, transparent);
+    animation: rec-flicker 2.6s steps(1, end) infinite;
+  }
+  @keyframes rec-flicker {
+    0%, 40%, 44%, 100% { opacity: 1; box-shadow: 0 0 6px 1px color-mix(in srgb, var(--accent) 55%, transparent); }
+    41%, 43%           { opacity: 0.25; box-shadow: 0 0 0 0 transparent; }
+    70%, 72%           { opacity: 0.4; }
+  }
+
+  /* 슬레이트 스트라이프를 더 지저분하게 */
+  .slate::before {
+    opacity: 1;
+    filter: contrast(1.15) brightness(0.92);
+  }
+
+  /* 뷰파인더 카드 — 살짝 기울고 그림자 짙게 */
+  .idx-card {
+    box-shadow: 0 14px 30px -18px var(--shadow);
+  }
+  .idx-card:hover {
+    box-shadow: 0 18px 40px -16px var(--shadow);
+  }
+
+  /* 저서 표지 — 눌린 액자 그림자 */
+  .pub-cover {
+    box-shadow:
+      0 18px 34px var(--shadow),
+      inset 0 0 60px color-mix(in srgb, #1a0d03 24%, transparent);
+  }
+
+  /* 본문 이미지가 없어도 전체 톤을 눌러주는 아주 옅은 세피아 레이어는
+     body 그라데이션이 담당 — 여기서는 텍스트 대비만 확보 */
+  .hero h1 { letter-spacing: -0.015em; }
+
+  @media (prefers-reduced-motion: reduce) {
+    body::before { animation: none; }
+    .filmruler .rec .tally,
+    .wordmark .tally { animation: none; }
   }
 
   /* =========================================================

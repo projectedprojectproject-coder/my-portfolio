@@ -11,9 +11,14 @@ export default function Publications() {
         <div>
           <h2>저서</h2>
           <div className="pub-feature">
-            <div className="pub-cover">
+            <a
+              className="pub-cover"
+              href={publication.link}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <img src={bookCover} alt={`${publication.title} 표지`} />
-            </div>
+            </a>
             <div className="pub-body">
               <span className="idx-tag">{publication.tag}</span>
               <h3>{publication.title}</h3>
