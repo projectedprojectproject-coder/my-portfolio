@@ -21,8 +21,10 @@
     --accent-soft-ink: #55200f;
     --shadow: rgba(46, 30, 12, 0.24);
 
-    --font-serif: "Source Serif 4", "Noto Serif KR", Georgia, "Times New Roman", serif;
-    --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    /* 빈티지 활자 조합 */
+    --font-display: "IM Fell English", "Noto Serif KR", Georgia, "Times New Roman", serif;
+    --font-serif: "Spectral", "Noto Serif KR", Georgia, "Times New Roman", serif;
+    --font-mono: "Courier Prime", "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 
     --measure: 62ch;
     --content-width: 780px;
@@ -71,12 +73,15 @@
     margin: 0;
     color: var(--ink);
     font-family: var(--font-serif);
-    font-size: 17px;
-    line-height: 1.7;
+    font-size: 17.5px;
+    line-height: 1.72;
     -webkit-font-smoothing: antialiased;
     word-break: keep-all;
     overflow-wrap: break-word;
     position: relative;
+    /* 빈티지 조판 — 구식 숫자 · 리가처 · 살짝 넓힌 자간 */
+    font-feature-settings: "onum" 1, "liga" 1, "dlig" 1, "kern" 1;
+    letter-spacing: 0.006em;
     /* 세피아 바탕 — 얼룩진 인화지 */
     background-color: var(--paper);
     background-image:
@@ -130,13 +135,21 @@
     75%  { transform: translate(-2%, -1%); }
     100% { transform: translate(3%, 3%); }
   }
-  h1, h2, h3 { text-wrap: balance; font-weight: 600; }
-  h1, h2 {
-    /* 인쇄 어긋남 — 미세한 색분해 */
-    text-shadow:
-      0.5px 0 0 color-mix(in srgb, var(--accent) 32%, transparent),
-      -0.5px 0 0 color-mix(in srgb, #0d3b3b 22%, transparent);
+  h1, h2, h3 {
+    text-wrap: balance;
+    font-family: var(--font-display);
+    font-weight: 400;
+    letter-spacing: 0.01em;
+    font-feature-settings: "onum" 1, "liga" 1, "dlig" 1;
   }
+  h1, h2 {
+    /* 활판 인쇄 어긋남 — 미세한 색분해 */
+    text-shadow:
+      0.6px 0 0 color-mix(in srgb, var(--accent) 34%, transparent),
+      -0.6px 0.4px 0 color-mix(in srgb, #0d3b3b 24%, transparent);
+  }
+  /* IM Fell 은 굵기가 없어 한글 제목은 Noto Serif KR 로 무게를 살림 */
+  :lang(ko) h1, :lang(ko) h2 { font-weight: 600; }
   p { text-wrap: pretty; }
   a { color: inherit; }
   ::selection { background: var(--accent); color: var(--accent-ink); }
@@ -224,9 +237,9 @@
   }
   .hero h1 {
     margin: 0 0 8px;
-    font-size: clamp(2.6rem, 6vw, 3.8rem);
-    line-height: 1.05;
-    letter-spacing: -0.01em;
+    font-size: clamp(2.7rem, 6.2vw, 4rem);
+    line-height: 1.08;
+    letter-spacing: 0.005em;
   }
   .hero .en-name {
     display: block;
@@ -334,8 +347,8 @@
   .section-mark .glyph { color: var(--accent); margin-right: 6px; }
   .section h2 {
     margin: 0 0 32px;
-    font-size: 1.7rem;
-    letter-spacing: -0.005em;
+    font-size: 1.85rem;
+    letter-spacing: 0.012em;
   }
 
   /* =========================================================
@@ -655,9 +668,23 @@
       inset 0 0 60px color-mix(in srgb, #1a0d03 24%, transparent);
   }
 
-  /* 본문 이미지가 없어도 전체 톤을 눌러주는 아주 옅은 세피아 레이어는
-     body 그라데이션이 담당 — 여기서는 텍스트 대비만 확보 */
-  .hero h1 { letter-spacing: -0.015em; }
+  /* 라틴 제목은 IM Fell 이탤릭으로 옛 표제지 느낌 */
+  .idx-card h3,
+  .pub-body h3 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 1.3rem;
+    letter-spacing: 0.01em;
+  }
+  .eyebrow,
+  .credential-tag,
+  .idx-tag {
+    font-family: var(--font-mono);
+    letter-spacing: 0.12em;
+  }
+  /* 필름 룰러 라벨 · REC — 타자기체 그대로, 자간만 벌림 */
+  .filmruler,
+  .section-mark { letter-spacing: 0.1em; }
 
   @media (prefers-reduced-motion: reduce) {
     body::before { animation: none; }
