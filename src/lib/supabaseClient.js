@@ -33,3 +33,5 @@ export const supabase = createClient(
 export const MEDIA_BUCKET = "media";
 // 파일별 제목/설명을 저장하는 테이블 (Storage 오브젝트엔 이런 필드가 없어서 별도 관리)
 export const MEDIA_TABLE = "media";
+// 소개/연구/프로젝트/저서 패널의 글+이미지 블록을 저장하는 테이블
+export const ENTRIES_TABLE = "entries";

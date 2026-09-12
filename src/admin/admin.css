@@ -191,3 +191,120 @@
 @media (max-width: 520px) {
   .admin-media-toprow { flex-direction: column; align-items: flex-start; }
 }
+
+/* 상단 미디어/콘텐츠 탭 */
+.admin-maintabs {
+  display: flex;
+  gap: 8px;
+  margin: 24px 0 -12px;
+}
+.admin-maintabs .admin-btn { background: transparent; }
+
+/* 소개/연구/프로젝트/저서 서브탭 */
+.admin-tabs {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin: 4px 0 22px;
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 14px;
+}
+.admin-tab {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.03em;
+  padding: 7px 14px;
+  color: var(--ink-soft);
+  background: transparent;
+  border: 1px solid var(--rule-strong);
+  cursor: pointer;
+}
+.admin-tab:hover { color: var(--accent); border-color: var(--accent); }
+.admin-tab.is-active {
+  color: var(--accent-ink);
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+/* 항목(entry) 편집 폼 */
+.admin-entry-editor { margin-top: 8px; }
+.admin-entry-editor > .admin-field:last-of-type { margin-bottom: 18px; }
+
+/* 블록 에디터 */
+.block-editor {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 8px;
+}
+.block-editor-item {
+  padding: 14px;
+  background: var(--paper);
+  border: 1px solid var(--rule);
+}
+.block-editor-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.05em;
+}
+.block-editor-actions { display: flex; gap: 6px; }
+.block-editor-item textarea {
+  width: 100%;
+  padding: 10px 12px;
+  font: inherit;
+  color: var(--ink);
+  background: var(--paper-raised);
+  border: 1px solid var(--rule-strong);
+  resize: vertical;
+}
+.block-editor-image {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.block-editor-image input[type="text"] {
+  width: 100%;
+  padding: 9px 11px;
+  font: inherit;
+  font-size: 0.86rem;
+  color: var(--ink);
+  background: var(--paper-raised);
+  border: 1px solid var(--rule-strong);
+}
+.block-editor-row {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.block-editor-row label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--ink-faint);
+}
+.block-editor-row select {
+  font: inherit;
+  padding: 6px 8px;
+  background: var(--paper-raised);
+  border: 1px solid var(--rule-strong);
+  color: var(--ink);
+}
+.block-editor-row input[type="text"] { flex: 1; min-width: 140px; }
+.block-editor-preview {
+  max-width: 220px;
+  height: auto;
+  border: 1px solid var(--rule-strong);
+}
+.block-editor-add {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 4px;
+}
