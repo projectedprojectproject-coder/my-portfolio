@@ -220,6 +220,31 @@
     border-bottom-color: var(--accent);
   }
 
+  /* 관리자 페이지 이동 — 눈에 띄지 않게, 맨 끝에 */
+  .masthead-admin-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--ink-faint);
+    text-decoration: none;
+    padding-bottom: 3px;
+    border-bottom: 1px solid transparent;
+    transition: color 0.15s ease, border-color 0.15s ease;
+  }
+  .masthead-admin-link .tally {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--ink-faint);
+    flex: none;
+    transition: background 0.15s ease;
+  }
+  .masthead-admin-link:hover {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+  }
+  .masthead-admin-link:hover .tally { background: var(--accent); }
+
   /* =========================================================
      히어로
      ========================================================= */

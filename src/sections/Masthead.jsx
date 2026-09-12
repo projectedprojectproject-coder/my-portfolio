@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { nav, profile } from "../data";
 import { useScrollSpy } from "../useScrollSpy";
 
@@ -22,6 +23,12 @@ export default function Masthead() {
               </a>
             </li>
           ))}
+          <li>
+            <Link to="/admin" className="masthead-admin-link" title="관리자 로그인">
+              <span className="tally" />
+              ADMIN
+            </Link>
+          </li>
         </ul>
       </div>
     </div>

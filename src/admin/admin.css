@@ -1,0 +1,193 @@
+/* =========================================================
+   관리자 화면 (/admin) — 포트폴리오 빈티지 토큰 재사용
+   ========================================================= */
+.admin-shell {
+  min-height: 100vh;
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 24px 64px;
+  font-family: var(--font-serif);
+  color: var(--ink);
+}
+
+.admin-topbar {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--rule-strong);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+}
+.admin-brand {
+  color: var(--ink-soft);
+  text-decoration: none;
+}
+.admin-brand:hover { color: var(--accent); }
+.admin-brand-mark { color: var(--accent); }
+.admin-topbar-right {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.admin-pad { padding: 32px 0; }
+
+.admin-card {
+  margin-top: 32px;
+  padding: 28px 26px;
+  background: var(--paper-raised);
+  border: 1px solid var(--rule);
+  box-shadow: 0 14px 30px -18px var(--shadow);
+}
+.admin-login { max-width: 380px; }
+
+.admin-title {
+  font-family: var(--font-display);
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  margin: 0 0 14px;
+  font-size: 1.5rem;
+}
+
+.admin-field {
+  display: block;
+  margin: 16px 0;
+}
+.admin-field span {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 6px;
+}
+.admin-field input {
+  width: 100%;
+  padding: 10px 12px;
+  font: inherit;
+  color: var(--ink);
+  background: var(--paper);
+  border: 1px solid var(--rule-strong);
+  border-radius: 0;
+}
+.admin-field input:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+
+.admin-btn {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+  padding: 9px 16px;
+  color: var(--accent-ink);
+  background: var(--accent);
+  border: 1px solid var(--accent);
+  cursor: pointer;
+}
+.admin-btn:hover { filter: brightness(1.08); }
+.admin-btn:disabled { opacity: 0.55; cursor: default; }
+.admin-btn.ghost {
+  color: var(--ink-soft);
+  background: transparent;
+  border-color: var(--rule-strong);
+}
+.admin-btn.ghost:hover { color: var(--accent); border-color: var(--accent); filter: none; }
+.admin-btn.danger {
+  color: var(--accent);
+  background: transparent;
+  border-color: color-mix(in srgb, var(--accent) 45%, transparent);
+}
+.admin-btn.danger:hover {
+  color: var(--accent-ink);
+  background: var(--accent);
+  filter: none;
+}
+
+.admin-muted { color: var(--ink-faint); font-size: 0.88rem; }
+.admin-ok { color: var(--accent-soft-ink); font-size: 0.9rem; }
+.admin-error {
+  color: var(--accent);
+  font-size: 0.9rem;
+  font-family: var(--font-mono);
+}
+
+.admin-drop {
+  margin-top: 8px;
+  padding: 30px 20px;
+  text-align: center;
+  border: 1.5px dashed var(--rule-strong);
+  background: var(--paper);
+  cursor: pointer;
+}
+.admin-drop:hover { border-color: var(--accent); }
+.admin-drop p { margin: 4px 0; }
+
+.admin-listhead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 26px 0 10px;
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  letter-spacing: 0.06em;
+  color: var(--ink-faint);
+}
+
+.admin-filelist {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.admin-media-row {
+  padding: 12px 0;
+  border-bottom: 1px solid var(--rule);
+}
+.admin-media-toprow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.admin-fileinfo {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+.admin-filename {
+  color: var(--ink);
+  word-break: break-all;
+}
+.admin-fileactions {
+  display: flex;
+  gap: 8px;
+  flex: none;
+}
+
+.admin-media-edit {
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px dashed var(--rule-strong);
+}
+.admin-media-edit textarea {
+  width: 100%;
+  padding: 10px 12px;
+  font: inherit;
+  color: var(--ink);
+  background: var(--paper);
+  border: 1px solid var(--rule-strong);
+  resize: vertical;
+}
+.admin-media-edit textarea:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+
+@media (max-width: 520px) {
+  .admin-media-toprow { flex-direction: column; align-items: flex-start; }
+}
