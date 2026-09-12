@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { isSupabaseConfigured } from "../lib/supabaseClient";
 import { useAuth } from "../lib/useAuth";
 import AdminLogin from "./AdminLogin";
 import AdminUpload from "./AdminUpload";
@@ -24,6 +25,14 @@ export default function AdminRoute() {
           </span>
         )}
       </header>
+
+      {!isSupabaseConfigured && (
+        <p className="admin-error admin-pad">
+          Supabase 환경변수(VITE_SUPABASE_URL / VITE_SUPABASE_ANON_KEY)가
+          설정되지 않았습니다. 로컬이면 .env.local, 배포 환경이면 Vercel의
+          Environment Variables를 확인하고 다시 빌드/배포하세요.
+        </p>
+      )}
 
       {loading ? (
         <p className="admin-muted admin-pad">세션 확인 중…</p>
