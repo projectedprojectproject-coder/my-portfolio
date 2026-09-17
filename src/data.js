@@ -22,6 +22,7 @@ export const nav = [
   { id: "research", label: "연구" },
   { id: "projects", label: "프로젝트" },
   { id: "publications", label: "저서" },
+  { id: "media", label: "미디어" },
   { id: "awards", label: "수상 · 자격증" },
   { id: "contact", label: "연락처" },
 ];

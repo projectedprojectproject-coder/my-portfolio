@@ -19,7 +19,10 @@ export default function BlockEditor({ blocks, onChange }) {
     onChange([...blocks, { type: "text", text: "" }]);
   }
   function addImage() {
-    onChange([...blocks, { type: "image", url: "", align: "center", caption: "" }]);
+    onChange([
+      ...blocks,
+      { type: "image", url: "", align: "center", caption: "", link: "" },
+    ]);
   }
 
   return (
@@ -59,10 +62,11 @@ export default function BlockEditor({ blocks, onChange }) {
 
           {b.type === "text" ? (
             <textarea
-              rows={4}
+              className="block-editor-body"
+              rows={10}
               value={b.text}
               onChange={(e) => update(i, { text: e.target.value })}
-              placeholder="문단 내용"
+              placeholder="원문을 그대로 옮겨 쓰거나 붙여넣으세요. 문단을 나누려면 빈 줄을 한 줄 띄우면 됩니다."
             />
           ) : (
             <div className="block-editor-image">
@@ -71,6 +75,12 @@ export default function BlockEditor({ blocks, onChange }) {
                 value={b.url}
                 onChange={(e) => update(i, { url: e.target.value })}
                 placeholder="이미지 URL (미디어 업로드 탭에서 복사)"
+              />
+              <input
+                type="text"
+                value={b.link || ""}
+                onChange={(e) => update(i, { link: e.target.value })}
+                placeholder="클릭 시 이동할 링크 (선택, 예: https://...)"
               />
               <div className="block-editor-row">
                 <label>

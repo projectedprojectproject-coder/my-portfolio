@@ -261,6 +261,10 @@
   border: 1px solid var(--rule-strong);
   resize: vertical;
 }
+.block-editor-body {
+  min-height: 220px;
+  line-height: 1.6;
+}
 .block-editor-image {
   display: flex;
   flex-direction: column;

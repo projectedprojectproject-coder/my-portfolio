@@ -602,6 +602,62 @@
   }
 
   /* =========================================================
+     미디어
+     ========================================================= */
+  .media-empty { color: var(--ink-faint); }
+  .media-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 24px;
+  }
+  .media-item {
+    margin: 0;
+    background: var(--paper-raised);
+    border: 1px solid var(--rule);
+    box-shadow: 0 14px 30px -18px var(--shadow);
+  }
+  .media-preview {
+    aspect-ratio: 4 / 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: var(--paper);
+    border-bottom: 1px solid var(--rule);
+  }
+  .media-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: sepia(0.35) contrast(1.06) brightness(0.94);
+    transition: transform 0.35s ease, filter 0.35s ease;
+  }
+  .media-item:hover .media-preview img {
+    transform: scale(1.04);
+    filter: sepia(0.12) contrast(1.06);
+  }
+  .media-preview video { width: 100%; height: 100%; object-fit: contain; background: #000; }
+  .media-preview audio { width: 90%; }
+  .media-preview a {
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    color: var(--accent);
+    text-decoration: none;
+  }
+  .media-item figcaption {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 12px 14px;
+  }
+  .media-item-title { font-size: 0.9rem; color: var(--ink); }
+  .media-item-desc {
+    font-family: var(--font-mono);
+    font-size: 0.76rem;
+    color: var(--ink-faint);
+  }
+
+  /* =========================================================
      수상 · 자격증
      ========================================================= */
   .credential-list {
