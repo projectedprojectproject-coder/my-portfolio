@@ -179,6 +179,11 @@
     padding: 16px 0;
     flex-wrap: wrap;
   }
+  .wordmark-group {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+  }
   .wordmark {
     display: inline-flex;
     align-items: center;
@@ -189,12 +194,33 @@
     letter-spacing: 0.02em;
     text-decoration: none;
   }
-  .wordmark .tally {
+
+  /* 이름 옆 빨간 점 — 관리자 로그인 버튼 */
+  .admin-dot {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    margin: -5px;
+    border-radius: 50%;
+    text-decoration: none;
+    transition: background 0.15s ease;
+  }
+  .admin-dot .tally {
     width: 8px;
     height: 8px;
     border-radius: 50%;
     background: var(--accent);
     flex: none;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .admin-dot:hover {
+    background: color-mix(in srgb, var(--accent) 16%, transparent);
+  }
+  .admin-dot:hover .tally {
+    transform: scale(1.35);
+    box-shadow: 0 0 8px 1px color-mix(in srgb, var(--accent) 65%, transparent);
   }
   .masthead-nav {
     display: flex;
@@ -219,31 +245,6 @@
     color: var(--accent);
     border-bottom-color: var(--accent);
   }
-
-  /* 관리자 페이지 이동 — 눈에 띄지 않게, 맨 끝에 */
-  .masthead-admin-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    color: var(--ink-faint);
-    text-decoration: none;
-    padding-bottom: 3px;
-    border-bottom: 1px solid transparent;
-    transition: color 0.15s ease, border-color 0.15s ease;
-  }
-  .masthead-admin-link .tally {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: var(--ink-faint);
-    flex: none;
-    transition: background 0.15s ease;
-  }
-  .masthead-admin-link:hover {
-    color: var(--accent);
-    border-bottom-color: var(--accent);
-  }
-  .masthead-admin-link:hover .tally { background: var(--accent); }
 
   /* =========================================================
      히어로
@@ -709,7 +710,7 @@
 
   /* REC · 워드마크 점 — 불규칙하게 깜빡이는 신호등 */
   .filmruler .rec .tally,
-  .wordmark .tally {
+  .admin-dot .tally {
     box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent) 70%, transparent);
     animation: rec-flicker 2.6s steps(1, end) infinite;
   }
@@ -761,7 +762,7 @@
   @media (prefers-reduced-motion: reduce) {
     body::before { animation: none; }
     .filmruler .rec .tally,
-    .wordmark .tally { animation: none; }
+    .admin-dot .tally { animation: none; }
   }
 
   /* =========================================================

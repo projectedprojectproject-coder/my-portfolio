@@ -308,3 +308,56 @@
   flex-wrap: wrap;
   margin-top: 4px;
 }
+
+/* 미디어 보기 갤러리 */
+.admin-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+.admin-gallery-item {
+  margin: 0;
+  background: var(--paper);
+  border: 1px solid var(--rule);
+}
+.admin-gallery-preview {
+  aspect-ratio: 4 / 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: var(--paper-raised);
+  border-bottom: 1px solid var(--rule);
+}
+.admin-gallery-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: sepia(0.35) contrast(1.06) brightness(0.94);
+}
+.admin-gallery-preview video {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: #000;
+}
+.admin-gallery-preview audio { width: 90%; }
+.admin-gallery-file {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--accent);
+  text-decoration: none;
+}
+.admin-gallery-item figcaption {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 12px;
+}
+.admin-gallery-item .admin-filename {
+  font-size: 0.86rem;
+  word-break: break-all;
+}
+.admin-gallery-item .admin-muted { font-size: 0.78rem; }
+.admin-gallery-item .admin-btn { align-self: flex-start; margin-top: 2px; }

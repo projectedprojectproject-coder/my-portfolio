@@ -4,13 +4,22 @@ import { isSupabaseConfigured } from "../lib/supabaseClient";
 import { useAuth } from "../lib/useAuth";
 import AdminLogin from "./AdminLogin";
 import AdminUpload from "./AdminUpload";
+import AdminGallery from "./AdminGallery";
 import ContentEditor from "./ContentEditor";
 import "./admin.css";
 
-// /admin — 로그인 안 됐으면 로그인 폼, 됐으면 미디어/콘텐츠 탭.
+const TABS = [
+  { key: "media", label: "미디어 업로드", Component: AdminUpload },
+  { key: "gallery", label: "미디어 보기", Component: AdminGallery },
+  { key: "content", label: "콘텐츠", Component: ContentEditor },
+];
+
+// /admin — 로그인 안 됐으면 로그인 폼, 됐으면 미디어 업로드/미디어 보기/콘텐츠 탭.
 export default function AdminRoute() {
   const { session, loading, user, signOut } = useAuth();
-  const [tab, setTab] = useState("media");
+  const [tab, setTab] = useState(TABS[0].key);
+
+  const Active = TABS.find((t) => t.key === tab)?.Component;
 
   return (
     <div className="admin-shell">
@@ -44,22 +53,18 @@ export default function AdminRoute() {
       ) : (
         <>
           <div className="admin-maintabs">
-            <button
-              type="button"
-              className={`admin-btn${tab === "media" ? "" : " ghost"}`}
-              onClick={() => setTab("media")}
-            >
-              미디어
-            </button>
-            <button
-              type="button"
-              className={`admin-btn${tab === "content" ? "" : " ghost"}`}
-              onClick={() => setTab("content")}
-            >
-              콘텐츠
-            </button>
+            {TABS.map((t) => (
+              <button
+                key={t.key}
+                type="button"
+                className={`admin-btn${tab === t.key ? "" : " ghost"}`}
+                onClick={() => setTab(t.key)}
+              >
+                {t.label}
+              </button>
+            ))}
           </div>
-          {tab === "media" ? <AdminUpload /> : <ContentEditor />}
+          {Active && <Active />}
         </>
       )}
     </div>

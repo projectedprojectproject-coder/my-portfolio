@@ -8,10 +8,15 @@ export default function Masthead() {
   return (
     <div className="masthead">
       <div className="shell masthead-row">
-        <a href="#top" className="wordmark">
-          <span className="tally" />
-          {profile.wordmark}
-        </a>
+        <div className="wordmark-group">
+          <a href="#top" className="wordmark">
+            {profile.wordmark}
+          </a>
+          {/* 이름 옆 빨간 점 — 관리자 로그인으로 이동하는 버튼 */}
+          <Link to="/admin" className="admin-dot" title="관리자 로그인" aria-label="관리자 로그인">
+            <span className="tally" />
+          </Link>
+        </div>
         <ul className="masthead-nav" id="site-nav">
           {nav.map((item) => (
             <li key={item.id}>
@@ -23,12 +28,6 @@ export default function Masthead() {
               </a>
             </li>
           ))}
-          <li>
-            <Link to="/admin" className="masthead-admin-link" title="관리자 로그인">
-              <span className="tally" />
-              ADMIN
-            </Link>
-          </li>
         </ul>
       </div>
     </div>
