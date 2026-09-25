@@ -1,6 +1,8 @@
 import { awards } from "../data";
+import { useSectionTitles } from "../lib/useSectionTitles";
 
 export default function Awards() {
+  const titles = useSectionTitles();
   return (
     <section id="awards" className="section">
       <div className="section-inner">
@@ -8,7 +10,7 @@ export default function Awards() {
           <span className="glyph">§</span>AWARDS
         </div>
         <div>
-          <h2>수상 · 자격증</h2>
+          <h2>{titles.awards || "수상 · 자격증"}</h2>
           <div className="credential-list">
             {awards.map((item) => (
               <div className="credential-item" key={item.title}>

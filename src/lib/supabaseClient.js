@@ -39,3 +39,5 @@ export const ENTRIES_TABLE = "entries";
 export const HERO_TABLE = "hero";
 // 소개 아래 "추천" 썸네일 카드 그리드
 export const FEATURED_TABLE = "featured";
+// 각 패널 제목(소개/연구/프로젝트/저서/미디어/수상·자격증)
+export const SECTION_TITLES_TABLE = "section_titles";

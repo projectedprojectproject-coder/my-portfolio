@@ -1,9 +1,5 @@
 import { useFeaturedList } from "../lib/useFeaturedList";
-
-function splitText(text) {
-  const lines = (text || "").split("\n").map((l) => l.trim()).filter(Boolean);
-  return { title: lines[0] || "", caption: lines.slice(1).join(" · ") };
-}
+import { splitTitleCaption } from "../lib/splitTitleCaption";
 
 export default function Featured() {
   const items = useFeaturedList();
@@ -21,7 +17,7 @@ export default function Featured() {
           <h2>추천</h2>
           <div className="feature-grid">
             {items.map((item, i) => {
-              const { title, caption } = splitText(item.text);
+              const { title, caption } = splitTitleCaption(item.text);
               return (
                 <a
                   className="feature-card"

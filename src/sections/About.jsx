@@ -1,10 +1,12 @@
 import { Fragment } from "react";
 import { about } from "../data";
 import { useEntries } from "../lib/useEntries";
+import { useSectionTitles } from "../lib/useSectionTitles";
 import BlockContent from "../components/BlockContent";
 
 export default function About() {
   const entries = useEntries("about");
+  const titles = useSectionTitles();
   // 관리자가 아직 편집 안 했으면(entries 비어있음) 기존 고정 문구를 보여준다.
   const useFallback = !entries || entries.length === 0;
   const blocks = useFallback
@@ -18,7 +20,7 @@ export default function About() {
           <span className="glyph">§</span>ABOUT
         </div>
         <div>
-          <h2>소개</h2>
+          <h2>{titles.about || "소개"}</h2>
           <div className="about-layout">
             <div className="about-copy">
               <BlockContent blocks={blocks} />

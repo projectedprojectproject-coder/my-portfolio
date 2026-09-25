@@ -8,6 +8,7 @@ export default function AdminHero() {
   const [subtitle, setSubtitle] = useState("");
   const [body, setBody] = useState("");
   const [photoUrl, setPhotoUrl] = useState("");
+  const [layout, setLayout] = useState("side");
   const [saving, setSaving] = useState(false);
   const [uploading, setUploading] = useState(false);
   const [error, setError] = useState(null);
@@ -29,6 +30,7 @@ export default function AdminHero() {
         setSubtitle(data.subtitle || "");
         setBody(data.body || "");
         setPhotoUrl(data.photo_url || "");
+        setLayout(data.layout || "side");
       });
   }, []);
 
@@ -43,6 +45,7 @@ export default function AdminHero() {
       subtitle: subtitle.trim() || null,
       body: body.trim() || null,
       photo_url: photoUrl.trim() || null,
+      layout,
       updated_at: new Date().toISOString(),
     });
     setSaving(false);
@@ -151,6 +154,32 @@ export default function AdminHero() {
           </p>
         </div>
       </div>
+
+      {photoUrl && (
+        <div className="admin-field">
+          <span>사진 배치</span>
+          <div className="admin-radio-row">
+            <label className="admin-radio">
+              <input
+                type="radio"
+                name="hero-layout"
+                checked={layout === "side"}
+                onChange={() => setLayout("side")}
+              />
+              오른쪽에 작게 (기존)
+            </label>
+            <label className="admin-radio">
+              <input
+                type="radio"
+                name="hero-layout"
+                checked={layout === "full"}
+                onChange={() => setLayout("full")}
+              />
+              헤더 전체 배경
+            </label>
+          </div>
+        </div>
+      )}
 
       {error && <p className="admin-error">{error}</p>}
       {notice && <p className="admin-ok">{notice}</p>}

@@ -12,10 +12,19 @@ export default function Hero() {
   const subtitle = useFallback ? profile.nameEn : hero.subtitle || profile.nameEn;
   const body = useFallback ? profile.heroDesc : hero.body || profile.heroDesc;
   const photoUrl = useFallback ? null : hero.photo_url;
+  const layout = useFallback ? "side" : hero.layout || "side";
+  const isFullPhoto = layout === "full" && Boolean(photoUrl);
 
   return (
-    <section className="hero">
-      <div className={`hero-layout${photoUrl ? "" : " no-photo"}`}>
+    <section
+      className={`hero${isFullPhoto ? " hero-full-photo" : ""}`}
+      style={isFullPhoto ? { backgroundImage: `url(${photoUrl})` } : undefined}
+    >
+      {isFullPhoto && <div className="hero-full-overlay" aria-hidden="true" />}
+
+      <div
+        className={`hero-layout${photoUrl && !isFullPhoto ? "" : " no-photo"}`}
+      >
         <div className="hero-text">
           <p className="eyebrow">{eyebrow}</p>
           <h1>
@@ -30,7 +39,7 @@ export default function Hero() {
           <p className="hero-desc">{body}</p>
         </div>
 
-        {photoUrl && (
+        {photoUrl && !isFullPhoto && (
           <div className="hero-photo-wrap">
             <img className="hero-photo" src={photoUrl} alt={profile.nameKo} />
             <div className="hero-filmstrip" aria-hidden="true" />

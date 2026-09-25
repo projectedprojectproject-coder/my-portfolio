@@ -1,9 +1,11 @@
 import { projects } from "../data";
 import { useEntries } from "../lib/useEntries";
+import { useSectionTitles } from "../lib/useSectionTitles";
 import BlockContent from "../components/BlockContent";
 
 export default function Projects() {
   const entries = useEntries("projects");
+  const titles = useSectionTitles();
   const useFallback = !entries || entries.length === 0;
   const items = useFallback
     ? projects.map((item) => ({
@@ -20,7 +22,7 @@ export default function Projects() {
           <span className="glyph">§</span>PROJECTS
         </div>
         <div>
-          <h2>프로젝트 &amp; 창작</h2>
+          <h2>{titles.projects || "프로젝트 & 창작"}</h2>
           <div className="card-row">
             {items.map((item) => (
               <article className="idx-card" key={item.id ?? item.title}>

@@ -11,6 +11,7 @@ create table if not exists public.hero (
   subtitle text,      -- 모노 소문자/대문자 라벨
   body text,
   photo_url text,      -- 썸네일 사진 (Storage 'media' 버킷 공개 URL)
+  layout text not null default 'side',  -- 'side' = 우측 작은 썸네일, 'full' = 헤더 전체 배경
   updated_at timestamptz not null default now(),
   constraint hero_singleton check (id = 1)
 );

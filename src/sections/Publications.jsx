@@ -1,10 +1,12 @@
 import { publication } from "../data";
 import bookCover from "../assets/book-cover.png";
 import { useEntries } from "../lib/useEntries";
+import { useSectionTitles } from "../lib/useSectionTitles";
 import BlockContent from "../components/BlockContent";
 
 export default function Publications() {
   const entries = useEntries("publications");
+  const titles = useSectionTitles();
   const useFallback = !entries || entries.length === 0;
   const entry = useFallback
     ? {
@@ -22,7 +24,7 @@ export default function Publications() {
           <span className="glyph">§</span>PUBLICATIONS
         </div>
         <div>
-          <h2>저서</h2>
+          <h2>{titles.publications || "저서"}</h2>
           <div className="pub-feature">
             <a
               className="pub-cover"

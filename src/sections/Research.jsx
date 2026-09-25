@@ -1,9 +1,11 @@
 import { research } from "../data";
 import { useEntries } from "../lib/useEntries";
+import { useSectionTitles } from "../lib/useSectionTitles";
 import BlockContent from "../components/BlockContent";
 
 export default function Research() {
   const entries = useEntries("research");
+  const titles = useSectionTitles();
   const useFallback = !entries || entries.length === 0;
   const items = useFallback
     ? research.map((item) => ({
@@ -19,7 +21,7 @@ export default function Research() {
           <span className="glyph">§</span>RESEARCH
         </div>
         <div>
-          <h2>연구</h2>
+          <h2>{titles.research || "연구"}</h2>
           <div className="card-row">
             {items.map((item) => (
               <article className="idx-card" key={item.id ?? item.title}>

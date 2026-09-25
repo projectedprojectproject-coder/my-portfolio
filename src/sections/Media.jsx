@@ -1,8 +1,10 @@
 import { useMediaList } from "../lib/useMediaList";
+import { useSectionTitles } from "../lib/useSectionTitles";
 import { mediaPublicUrl, guessMediaKind } from "../lib/media";
 
 export default function Media() {
   const items = useMediaList();
+  const titles = useSectionTitles();
   const loading = items === null;
   const list = items ?? [];
 
@@ -13,7 +15,7 @@ export default function Media() {
           <span className="glyph">§</span>MEDIA
         </div>
         <div>
-          <h2>미디어</h2>
+          <h2>{titles.media || "미디어"}</h2>
 
           {loading ? null : list.length === 0 ? (
             <p className="media-empty">아직 등록된 미디어가 없습니다.</p>
