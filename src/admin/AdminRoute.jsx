@@ -4,6 +4,7 @@ import { isSupabaseConfigured } from "../lib/supabaseClient";
 import { useAuth } from "../lib/useAuth";
 import AdminLogin from "./AdminLogin";
 import AdminHero from "./AdminHero";
+import AdminFeatured from "./AdminFeatured";
 import AdminUpload from "./AdminUpload";
 import AdminGallery from "./AdminGallery";
 import ContentEditor from "./ContentEditor";
@@ -11,12 +12,13 @@ import "./admin.css";
 
 const TABS = [
   { key: "hero", label: "헤더", Component: AdminHero },
+  { key: "featured", label: "추천", Component: AdminFeatured },
   { key: "media", label: "미디어 업로드", Component: AdminUpload },
   { key: "gallery", label: "미디어 보기", Component: AdminGallery },
   { key: "content", label: "콘텐츠", Component: ContentEditor },
 ];
 
-// /admin — 로그인 안 됐으면 로그인 폼, 됐으면 헤더/미디어 업로드/미디어 보기/콘텐츠 탭.
+// /admin — 로그인 안 됐으면 로그인 폼, 됐으면 헤더/추천/미디어 업로드/미디어 보기/콘텐츠 탭.
 export default function AdminRoute() {
   const { session, loading, user, signOut } = useAuth();
   const [tab, setTab] = useState(TABS[0].key);

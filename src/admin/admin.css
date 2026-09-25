@@ -393,3 +393,29 @@
   border: 1px dashed var(--rule-strong);
 }
 .admin-thumb-actions { display: flex; gap: 8px; }
+
+/* 추천 카드 편집 — 가로형 썸네일 + 목록 미니 썸네일 */
+.admin-thumb-preview-wide {
+  width: 220px;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+.admin-thumb-empty-wide {
+  width: 220px;
+  aspect-ratio: 4 / 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  color: var(--ink-faint);
+  background: var(--paper);
+  border: 1px dashed var(--rule-strong);
+}
+.admin-thumb-mini {
+  width: 44px;
+  height: 33px;
+  object-fit: cover;
+  border: 1px solid var(--rule-strong);
+  margin-bottom: 4px;
+}

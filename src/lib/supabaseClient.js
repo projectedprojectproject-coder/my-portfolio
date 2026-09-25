@@ -37,3 +37,5 @@ export const MEDIA_TABLE = "media";
 export const ENTRIES_TABLE = "entries";
 // 홈 화면 맨 위 히어로(헤더) 영역 — 싱글턴 테이블(id=1)
 export const HERO_TABLE = "hero";
+// 소개 아래 "추천" 썸네일 카드 그리드
+export const FEATURED_TABLE = "featured";

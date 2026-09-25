@@ -1,6 +1,7 @@
 import Masthead from "./sections/Masthead";
 import Hero from "./sections/Hero";
 import About from "./sections/About";
+import Featured from "./sections/Featured";
 import Research from "./sections/Research";
 import Projects from "./sections/Projects";
 import Publications from "./sections/Publications";
@@ -18,6 +19,7 @@ export default function App() {
       <main className="shell">
         <Hero />
         <About />
+        <Featured />
         <Research />
         <Projects />
         <Publications />
