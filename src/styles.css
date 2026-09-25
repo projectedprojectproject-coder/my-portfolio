@@ -252,6 +252,17 @@
   .hero {
     padding: 72px 0 56px;
   }
+
+  /* 좌: 글 / 우: 썸네일 사진 */
+  .hero-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 280px;
+    gap: 48px;
+    align-items: center;
+  }
+  .hero-layout.no-photo { grid-template-columns: minmax(0, 1fr); }
+  .hero-text { min-width: 0; }
+
   .eyebrow {
     font-family: var(--font-mono);
     font-size: 0.74rem;
@@ -262,25 +273,63 @@
     margin: 0 0 22px;
   }
   .hero h1 {
-    margin: 0 0 8px;
-    font-size: clamp(2.7rem, 6.2vw, 4rem);
-    line-height: 1.08;
+    margin: 0 0 14px;
+    font-size: clamp(2.4rem, 5.4vw, 3.6rem);
+    line-height: 1.16;
     letter-spacing: 0.005em;
   }
-  .hero .en-name {
-    display: block;
+  .hero-subtitle {
     font-family: var(--font-mono);
     font-weight: 500;
-    font-size: 1.05rem;
+    font-size: 0.82rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
     color: var(--ink-faint);
-    letter-spacing: 0.03em;
-    margin-top: 10px;
+    margin: 0 0 22px;
   }
   .hero-desc {
     max-width: var(--measure);
     color: var(--ink-soft);
     font-size: 1.08rem;
-    margin: 26px 0 0;
+    margin: 0;
+  }
+
+  /* 썸네일 사진 + 필름 스트립 장식 */
+  .hero-photo-wrap {
+    position: relative;
+    justify-self: end;
+    margin-right: 14px;
+  }
+  .hero-photo {
+    display: block;
+    width: 100%;
+    max-width: 280px;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    border: 1px solid var(--rule);
+    box-shadow: 0 20px 40px var(--shadow);
+    filter: sepia(0.3) contrast(1.05) brightness(0.96);
+  }
+  .hero-filmstrip {
+    position: absolute;
+    top: -14px;
+    bottom: -14px;
+    right: -14px;
+    width: 20px;
+    background-image: repeating-linear-gradient(
+      to bottom,
+      var(--ink) 0,
+      var(--ink) 9px,
+      transparent 9px,
+      transparent 19px
+    );
+    opacity: 0.8;
+  }
+
+  @media (max-width: 760px) {
+    .hero-layout { grid-template-columns: minmax(0, 1fr); }
+    .hero-photo-wrap { justify-self: start; margin: 28px 14px 0 0; }
+    .hero-photo { max-width: 220px; }
   }
 
   /* 필름 룰러 — 장식용 프레임 카운터 그래픽 */

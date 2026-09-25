@@ -35,3 +35,5 @@ export const MEDIA_BUCKET = "media";
 export const MEDIA_TABLE = "media";
 // 소개/연구/프로젝트/저서 패널의 글+이미지 블록을 저장하는 테이블
 export const ENTRIES_TABLE = "entries";
+// 홈 화면 맨 위 히어로(헤더) 영역 — 싱글턴 테이블(id=1)
+export const HERO_TABLE = "hero";

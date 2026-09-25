@@ -365,3 +365,31 @@
 }
 .admin-gallery-item .admin-muted { font-size: 0.78rem; }
 .admin-gallery-item .admin-btn { align-self: flex-start; margin-top: 2px; }
+
+/* 헤더 편집 — 썸네일 업로더 */
+.admin-thumb-editor {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: flex-start;
+  margin-top: 6px;
+}
+.admin-thumb-preview {
+  width: 160px;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border: 1px solid var(--rule-strong);
+}
+.admin-thumb-empty {
+  width: 160px;
+  aspect-ratio: 4 / 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  color: var(--ink-faint);
+  background: var(--paper);
+  border: 1px dashed var(--rule-strong);
+}
+.admin-thumb-actions { display: flex; gap: 8px; }
