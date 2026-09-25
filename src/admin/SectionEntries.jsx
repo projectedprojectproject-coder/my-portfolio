@@ -2,6 +2,21 @@ import { useCallback, useEffect, useState } from "react";
 import { supabase, ENTRIES_TABLE } from "../lib/supabaseClient";
 import EntryEditor from "./EntryEditor";
 
+// "소개"는 사이트에서 entries[0] 하나만 쓰기 때문에, 여기서 2개 이상
+// 만들면 화면엔 안 보이는 "유령 항목"이 생겨서 편집이 안 먹히는 것처럼
+// 보인다. 그 섹션만 1개로 막는다.
+const SINGLE_ENTRY_SECTIONS = new Set(["about"]);
+
+function previewLabel(item) {
+  if (item.title) return item.title;
+  const firstText = (item.blocks || []).find((b) => b.type === "text" && b.text)?.text;
+  if (firstText) {
+    const oneLine = firstText.replace(/\s+/g, " ").trim();
+    return oneLine.length > 40 ? `${oneLine.slice(0, 40)}…` : oneLine;
+  }
+  return "(빈 항목)";
+}
+
 export default function SectionEntries({ section, label }) {
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -39,7 +54,7 @@ export default function SectionEntries({ section, label }) {
   }
 
   async function remove(item) {
-    if (!window.confirm(`"${item.title || "제목 없음"}" 항목을 삭제할까요?`)) return;
+    if (!window.confirm(`"${previewLabel(item)}" 항목을 삭제할까요?`)) return;
     const { error } = await supabase.from(ENTRIES_TABLE).delete().eq("id", item.id);
     if (error) {
       setError(error.message);
@@ -52,6 +67,8 @@ export default function SectionEntries({ section, label }) {
     setEditingId(null);
     refresh();
   }
+
+  const canAdd = !SINGLE_ENTRY_SECTIONS.has(section) || items.length === 0;
 
   if (editingId === "new") {
     const nextPosition =
@@ -83,10 +100,19 @@ export default function SectionEntries({ section, label }) {
         <span>
           {label} ({items.length})
         </span>
-        <button className="admin-btn ghost" onClick={() => setEditingId("new")}>
-          + 새 항목
-        </button>
+        {canAdd && (
+          <button className="admin-btn ghost" onClick={() => setEditingId("new")}>
+            + 새 항목
+          </button>
+        )}
       </div>
+
+      {SINGLE_ENTRY_SECTIONS.has(section) && items.length > 1 && (
+        <p className="admin-error">
+          이 섹션은 1개만 화면에 쓰이는데 지금 {items.length}개가 있습니다.
+          맨 위(순서 1번) 것만 실제로 보이니, 나머지는 삭제해 주세요.
+        </p>
+      )}
 
       {error && <p className="admin-error">{error}</p>}
 
@@ -104,10 +130,11 @@ export default function SectionEntries({ section, label }) {
             <li className="admin-media-row" key={item.id}>
               <div className="admin-media-toprow">
                 <div className="admin-fileinfo">
-                  <span className="admin-filename">
-                    {item.title || "(제목 없음)"}
-                  </span>
+                  <span className="admin-filename">{previewLabel(item)}</span>
                   {item.tag && <span className="admin-muted">{item.tag}</span>}
+                  {i === 0 && SINGLE_ENTRY_SECTIONS.has(section) && (
+                    <span className="admin-muted">← 화면에 보이는 항목</span>
+                  )}
                 </div>
                 <div className="admin-fileactions">
                   <button
