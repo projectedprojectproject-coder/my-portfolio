@@ -1,9 +1,25 @@
+import { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { nav, profile } from "../data";
 import { useScrollSpy } from "../useScrollSpy";
 
 export default function Masthead() {
   const activeId = useScrollSpy(nav.map((item) => item.id));
+  const navRef = useRef(null);
+
+  // 모바일에서는 메뉴가 옆으로 밀어 보는 한 줄이라, 현재 섹션 메뉴가
+  // 화면 밖에 있으면 가운데로 끌어온다 (세로 스크롤은 건드리지 않음).
+  useEffect(() => {
+    const list = navRef.current;
+    const active = list?.querySelector("a.is-active");
+    if (!list || !active || list.scrollWidth <= list.clientWidth) return;
+    const left =
+      active.getBoundingClientRect().left -
+      list.getBoundingClientRect().left +
+      list.scrollLeft -
+      (list.clientWidth - active.offsetWidth) / 2;
+    list.scrollTo({ left, behavior: "smooth" });
+  }, [activeId]);
 
   return (
     <div className="masthead">
@@ -17,7 +33,7 @@ export default function Masthead() {
             <span className="tally" />
           </Link>
         </div>
-        <ul className="masthead-nav" id="site-nav">
+        <ul className="masthead-nav" id="site-nav" ref={navRef}>
           {nav.map((item) => (
             <li key={item.id}>
               <a

@@ -434,3 +434,39 @@
   border: 1px solid var(--rule-strong);
   margin-bottom: 4px;
 }
+
+/* =========================================================
+   모바일 — 손가락으로 누르기 좋게, 좁은 화면에서 안 넘치게
+   ========================================================= */
+.admin-gallery { grid-template-columns: repeat(auto-fill, minmax(min(200px, 100%), 1fr)); }
+.admin-fileactions { flex-wrap: wrap; }
+
+@media (max-width: 640px) {
+  .admin-shell {
+    padding-left: max(16px, env(safe-area-inset-left));
+    padding-right: max(16px, env(safe-area-inset-right));
+  }
+  .admin-card { padding: 20px 16px; }
+
+  /* 상단바: 로그인 후 (돌아가기 / MEDIA ADMIN / 이메일 / 로그아웃) 이 한 줄에 안 들어가므로 줄바꿈 */
+  .admin-topbar { flex-wrap: wrap; row-gap: 4px; }
+  .admin-brand { padding: 10px 0; }
+  .admin-topbar-right {
+    margin-left: 0;
+    width: 100%;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .admin-topbar-right .admin-muted { overflow-wrap: anywhere; }
+
+  /* 버튼·입력칸 터치 높이 확보 (iOS 는 16px 미만 입력칸을 누르면 화면이 확대되어 버림) */
+  .admin-btn { min-height: 40px; }
+  .admin-field input,
+  .admin-field textarea,
+  .block-editor-item textarea,
+  .block-editor-image input[type="text"],
+  .admin-media-edit textarea { font-size: 16px; }
+  .admin-tab { min-height: 40px; }
+  .admin-fileactions { width: 100%; }
+}

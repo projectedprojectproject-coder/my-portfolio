@@ -68,7 +68,11 @@
      리셋 / 베이스
      ========================================================= */
   * { box-sizing: border-box; }
-  html { background: var(--paper); }
+  html {
+    background: var(--paper);
+    -webkit-text-size-adjust: 100%; /* iOS 가로 회전 시 글자 자동 확대 방지 */
+    text-size-adjust: 100%;
+  }
   body {
     margin: 0;
     color: var(--ink);
@@ -157,7 +161,8 @@
   .shell {
     max-width: calc(var(--content-width) + var(--gutter-width) + 64px);
     margin: 0 auto;
-    padding: 0 24px;
+    /* 노치가 있는 폰을 가로로 눕혔을 때 글이 노치에 가려지지 않게 */
+    padding: 0 max(24px, env(safe-area-inset-right)) 0 max(24px, env(safe-area-inset-left));
   }
 
   /* =========================================================
@@ -518,7 +523,7 @@
      ========================================================= */
   .card-row {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
     gap: 24px;
   }
   .idx-card {
@@ -703,7 +708,7 @@
      ========================================================= */
   .feature-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr));
     gap: 24px;
   }
   .feature-card {
@@ -788,7 +793,7 @@
   .media-empty { color: var(--ink-faint); }
   .media-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(min(220px, 100%), 1fr));
     gap: 24px;
   }
   .media-item {
@@ -905,7 +910,7 @@
      푸터
      ========================================================= */
   .credits {
-    padding: 28px 0 48px;
+    padding: 28px 0 calc(48px + env(safe-area-inset-bottom));
     font-family: var(--font-mono);
     font-size: 0.7rem;
     color: var(--ink-faint);
@@ -999,17 +1004,62 @@
      반응형
      ========================================================= */
   @media (max-width: 760px) {
-    .section-inner { grid-template-columns: 1fr; gap: 14px; }
+    /* minmax(0, 1fr): 안쪽 내용이 아무리 길어도 칸이 화면 밖으로 늘어나지 않게 */
+    .section-inner { grid-template-columns: minmax(0, 1fr); gap: 14px; }
     .section-mark { padding-top: 0; }
-    .about-layout { grid-template-columns: 1fr; }
-    .credential-item { grid-template-columns: 1fr; gap: 4px; }
-    .credential-meta { order: 3; }
+    .about-layout { grid-template-columns: minmax(0, 1fr); }
+    .credential-item { grid-template-columns: minmax(0, 1fr); gap: 4px; }
+    .credential-meta { order: 3; white-space: normal; }
+    .credential-title { overflow-wrap: anywhere; }
+
+    /* 필름 눈금줄 — 긴 라벨이 페이지를 옆으로 밀어내던 문제.
+       눈금은 숨기고 라벨은 줄바꿈 허용 */
+    .filmruler { flex-wrap: wrap; gap: 8px 12px; }
+    .filmruler .ticks { display: none; }
+    .filmruler .label { white-space: normal; flex: 1 1 100%; }
+
+    /* 긴 이메일 주소가 화면 밖으로 나가지 않게 */
+    .contact-copy { flex-basis: 100%; }
+    .contact-email { overflow-wrap: anywhere; font-size: 1rem; }
+
+    /* 헤더 — 140px 였던 걸 줄이고, 메뉴는 옆으로 밀어서 보는 한 줄로 */
+    .masthead-row { padding: 8px 0 0; gap: 0; }
+    .masthead-nav {
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      gap: 2px;
+      width: 100%;
+      font-size: 0.82rem;
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+    }
+    .masthead-nav::-webkit-scrollbar { display: none; }
+    .masthead-nav a {
+      display: block;
+      white-space: nowrap;
+      padding: 11px 9px;  /* 손가락으로 누르기 좋은 높이(약 44px) */
+    }
+
+    /* 손가락 터치 영역 넓히기 — 보이는 크기는 그대로, 눌리는 영역만 확대 */
+    .admin-dot { width: 40px; height: 40px; margin: -11px; }
+    .text-link { position: relative; }
+    .text-link::after { content: ""; position: absolute; inset: -12px -6px; }
+    .wordmark { padding: 8px 0; }
+
+    .idx-card { padding: 20px 18px 18px; }
+    .hero.hero-full-photo { padding: 40px 20px; }
+  }
+
+  /* 폰: 그레인 애니메이션(배터리·버벅임)과 고정 배경(iOS 에서 끊김) 끄기 */
+  @media (max-width: 760px), (pointer: coarse) {
+    body { background-attachment: scroll; }
+    body::before { animation: none; opacity: 0.3; }
   }
 
   @media (max-width: 480px) {
     body { font-size: 16px; }
-    .hero { padding: 48px 0 40px; }
-    .section { padding: 48px 0; }
+    .hero { padding: 40px 0 36px; }
+    .section { padding: 44px 0; }
   }
 
   @media (prefers-reduced-motion: reduce) {
