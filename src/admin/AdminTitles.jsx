@@ -3,6 +3,7 @@ import { supabase, SECTION_TITLES_TABLE } from "../lib/supabaseClient";
 
 const SECTIONS = [
   { key: "about", label: "소개", fallback: "소개" },
+  { key: "featured", label: "추천", fallback: "추천" },
   { key: "research", label: "연구", fallback: "연구" },
   { key: "projects", label: "프로젝트", fallback: "프로젝트 & 창작" },
   { key: "publications", label: "저서", fallback: "저서" },
