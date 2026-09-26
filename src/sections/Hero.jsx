@@ -42,7 +42,6 @@ export default function Hero() {
         {photoUrl && !isFullPhoto && (
           <div className="hero-photo-wrap">
             <img className="hero-photo" src={photoUrl} alt={profile.nameKo} />
-            <div className="hero-filmstrip" aria-hidden="true" />
           </div>
         )}
       </div>

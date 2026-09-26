@@ -1,6 +1,6 @@
 import { useMediaList } from "../lib/useMediaList";
 import { useSectionTitles } from "../lib/useSectionTitles";
-import { mediaPublicUrl, guessMediaKind } from "../lib/media";
+import { mediaPublicUrl, guessMediaKind, looksLikeFileName } from "../lib/media";
 
 export default function Media() {
   const items = useMediaList();
@@ -24,12 +24,15 @@ export default function Media() {
               {list.map((m) => {
                 const url = mediaPublicUrl(m.path);
                 const kind = guessMediaKind(m.path);
-                const title = m.title || m.path;
+                // 파일명처럼 보이는 제목(업로드 시 자동 입력값)은 숨긴다.
+                const title =
+                  m.title && !looksLikeFileName(m.title) ? m.title : null;
+                const alt = title || m.description || "미디어";
                 return (
                   <figure className="media-item" key={m.path}>
                     <div className="media-preview">
                       {kind === "image" && (
-                        <img src={url} alt={title} loading="lazy" />
+                        <img src={url} alt={alt} loading="lazy" />
                       )}
                       {kind === "video" && (
                         <video src={url} controls preload="metadata" />
@@ -41,9 +44,9 @@ export default function Media() {
                         </a>
                       )}
                     </div>
-                    {(m.title || m.description) && (
+                    {(title || m.description) && (
                       <figcaption>
-                        {m.title && <span className="media-item-title">{m.title}</span>}
+                        {title && <span className="media-item-title">{title}</span>}
                         {m.description && (
                           <span className="media-item-desc">{m.description}</span>
                         )}

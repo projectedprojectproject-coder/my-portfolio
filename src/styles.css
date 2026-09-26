@@ -294,11 +294,10 @@
     margin: 0;
   }
 
-  /* 썸네일 사진 + 필름 스트립 장식 */
+  /* 썸네일 사진 */
   .hero-photo-wrap {
     position: relative;
     justify-self: end;
-    margin-right: 14px;
   }
   .hero-photo {
     display: block;
@@ -310,25 +309,10 @@
     box-shadow: 0 20px 40px var(--shadow);
     filter: sepia(0.3) contrast(1.05) brightness(0.96);
   }
-  .hero-filmstrip {
-    position: absolute;
-    top: -14px;
-    bottom: -14px;
-    right: -14px;
-    width: 20px;
-    background-image: repeating-linear-gradient(
-      to bottom,
-      var(--ink) 0,
-      var(--ink) 9px,
-      transparent 9px,
-      transparent 19px
-    );
-    opacity: 0.8;
-  }
 
   @media (max-width: 760px) {
     .hero-layout { grid-template-columns: minmax(0, 1fr); }
-    .hero-photo-wrap { justify-self: start; margin: 28px 14px 0 0; }
+    .hero-photo-wrap { justify-self: start; margin: 28px 0 0; }
     .hero-photo { max-width: 220px; }
   }
 
@@ -904,7 +888,8 @@
     justify-content: space-between;
     gap: 20px;
   }
-  .contact-copy { color: var(--ink-soft); max-width: 44ch; margin: 0; }
+  /* 이메일 옆 남는 너비를 전부 쓰고, 글이 길어 자리가 모자라면 이메일이 아래로 내려간다 */
+  .contact-copy { color: var(--ink-soft); flex: 1 1 24rem; max-width: none; margin: 0; }
   .contact-email {
     font-family: var(--font-mono);
     font-size: 1.15rem;
