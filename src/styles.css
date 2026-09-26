@@ -605,55 +605,6 @@
   }
 
   /* =========================================================
-     저서
-     ========================================================= */
-  .pub-feature {
-    display: grid;
-    grid-template-columns: 200px minmax(0, 1fr);
-    gap: 40px;
-    align-items: start;
-  }
-  .pub-cover {
-    display: block;
-    width: 100%;
-    border: 1px solid var(--rule);
-    box-shadow: 0 18px 32px var(--shadow);
-    overflow: hidden;
-    cursor: pointer;
-  }
-  .pub-cover img {
-    display: block;
-    width: 100%;
-    height: auto;
-    transition: transform 0.35s ease, filter 0.35s ease;
-    filter: sepia(0.45) contrast(1.08) brightness(0.94) saturate(0.85);
-  }
-  .pub-cover:hover img,
-  .pub-cover:focus-visible img {
-    transform: scale(1.05);
-    filter: sepia(0.12) contrast(1.08) brightness(1);
-  }
-  .pub-body .idx-tag { margin-bottom: 14px; }
-  .pub-body h3 {
-    margin: 0 0 6px;
-    font-size: 1.25rem;
-    line-height: 1.4;
-  }
-  .pub-author {
-    font-family: var(--font-mono);
-    font-size: 0.78rem;
-    color: var(--ink-faint);
-    letter-spacing: 0.03em;
-    margin: 0 0 20px;
-  }
-  .pub-body p.pub-desc {
-    color: var(--ink-soft);
-    max-width: var(--measure);
-    margin: 0 0 16px;
-  }
-  .pub-body p.pub-desc:last-child { margin-bottom: 0; }
-
-  /* =========================================================
      블록 콘텐츠 (관리자 편집 — 텍스트/이미지 블록)
      ========================================================= */
   .blocks-wrap::after { content: ""; display: table; clear: both; }
@@ -1036,16 +987,8 @@
     box-shadow: 0 18px 40px -16px var(--shadow);
   }
 
-  /* 저서 표지 — 눌린 액자 그림자 */
-  .pub-cover {
-    box-shadow:
-      0 18px 34px var(--shadow),
-      inset 0 0 60px color-mix(in srgb, #1a0d03 24%, transparent);
-  }
-
   /* 라틴 제목은 IM Fell 이탤릭으로 옛 표제지 느낌 */
-  .idx-card h3,
-  .pub-body h3 {
+  .idx-card h3 {
     font-family: var(--font-display);
     font-weight: 400;
     font-size: 1.3rem;
@@ -1074,8 +1017,6 @@
     .section-inner { grid-template-columns: 1fr; gap: 14px; }
     .section-mark { padding-top: 0; }
     .about-layout { grid-template-columns: 1fr; }
-    .pub-feature { grid-template-columns: 1fr; }
-    .pub-cover { max-width: 220px; }
     .credential-item { grid-template-columns: 1fr; gap: 4px; }
     .credential-meta { order: 3; }
   }

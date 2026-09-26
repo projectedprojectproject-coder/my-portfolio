@@ -7,6 +7,8 @@ import AdminLogin from "./AdminLogin";
 import AdminHero from "./AdminHero";
 import AdminFeatured from "./AdminFeatured";
 import AdminTitles from "./AdminTitles";
+import AdminAwards from "./AdminAwards";
+import AdminContact from "./AdminContact";
 import AdminUpload from "./AdminUpload";
 import AdminGallery from "./AdminGallery";
 import ContentEditor from "./ContentEditor";
@@ -16,12 +18,14 @@ const TABS = [
   { key: "hero", label: "헤더", Component: AdminHero },
   { key: "featured", label: "추천", Component: AdminFeatured },
   { key: "titles", label: "제목", Component: AdminTitles },
+  { key: "content", label: "콘텐츠", Component: ContentEditor },
+  { key: "awards", label: "수상·자격증", Component: AdminAwards },
+  { key: "contact", label: "Contact", Component: AdminContact },
   { key: "media", label: "미디어 업로드", Component: AdminUpload },
   { key: "gallery", label: "미디어 보기", Component: AdminGallery },
-  { key: "content", label: "콘텐츠", Component: ContentEditor },
 ];
 
-// /admin — 로그인 안 됐으면 로그인 폼, 됐으면 헤더/추천/제목/미디어 업로드/미디어 보기/콘텐츠 탭.
+// /admin — 로그인 안 됐으면 로그인 폼, 됐으면 각 편집 탭들.
 // 로그인 상태로 10분간 조작이 없으면 자동 로그아웃 + 경보음.
 export default function AdminRoute() {
   const { session, loading, user, signOut } = useAuth();

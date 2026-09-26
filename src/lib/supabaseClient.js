@@ -41,3 +41,7 @@ export const HERO_TABLE = "hero";
 export const FEATURED_TABLE = "featured";
 // 각 패널 제목(소개/연구/프로젝트/저서/미디어/수상·자격증)
 export const SECTION_TITLES_TABLE = "section_titles";
+// 수상·자격증 목록
+export const AWARDS_TABLE = "awards";
+// Contact 안내 문구 + 이메일 — 싱글턴 테이블(id=1)
+export const CONTACT_TABLE = "contact";

@@ -195,6 +195,7 @@
 /* 상단 미디어/콘텐츠 탭 */
 .admin-maintabs {
   display: flex;
+  flex-wrap: wrap;
   gap: 8px;
   margin: 24px 0 -12px;
 }
