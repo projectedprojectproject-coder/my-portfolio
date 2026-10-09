@@ -21,6 +21,7 @@ export const nav = [
   { id: "about", label: "소개" },
   { id: "research", label: "연구" },
   { id: "projects", label: "프로젝트" },
+  { id: "assignments", label: "과제" },
   { id: "publications", label: "저서" },
   { id: "media", label: "미디어" },
   { id: "awards", label: "수상 · 자격증" },
@@ -93,6 +94,22 @@ export const projects = [
     title: "경기 지역 장애인 지원 광고",
     role: null,
     paragraphs: ["경기 지역 장애인 지원을 위한 광고를 다수 제작했습니다."],
+  },
+];
+
+// 과제 섹션 — 항목을 추가하면 카드가 하나 더 생긴다.
+// src 는 public/ 아래에 넣은 HTML 게임 파일의 주소.
+export const assignments = [
+  {
+    id: "coffee-delivery",
+    tag: "수업 과제 · Week 3",
+    title: "커피 배달 게임",
+    subtitle: "프롬프트 구조화 실습",
+    description:
+      "카페에서 커피 네 잔을 받아 이웃 네 곳에 배달하는 작은 3D 마을 게임입니다. 이미 만들어진 게임을 출발점으로, AI에게 원하는 변경을 정확하게 요청하는 연습에 쓰였습니다.",
+    controls: "이동 방향키 · WASD  /  커피 받기·전하기 E · Space  /  시작 Enter",
+    src: "/games/coffee-delivery/index.html",
+    source: "https://github.com/projectedprojectproject-coder/coffee-delivery-game-week3",
   },
 ];
 

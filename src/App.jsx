@@ -4,9 +4,11 @@ import About from "./sections/About";
 import Featured from "./sections/Featured";
 import Research from "./sections/Research";
 import Projects from "./sections/Projects";
+import Assignments from "./sections/Assignments";
 import Publications from "./sections/Publications";
 import Media from "./sections/Media";
 import Awards from "./sections/Awards";
+import Changelog from "./sections/Changelog";
 import Contact from "./sections/Contact";
 import { profile } from "./data";
 
@@ -22,9 +24,11 @@ export default function App() {
         <Featured />
         <Research />
         <Projects />
+        <Assignments />
         <Publications />
         <Media />
         <Awards />
+        <Changelog />
         <Contact />
       </main>
 

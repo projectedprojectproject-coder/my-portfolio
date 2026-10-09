@@ -6,9 +6,11 @@ const SECTIONS = [
   { key: "featured", label: "추천", fallback: "추천" },
   { key: "research", label: "연구", fallback: "연구" },
   { key: "projects", label: "프로젝트", fallback: "프로젝트 & 창작" },
+  { key: "assignments", label: "과제", fallback: "과제" },
   { key: "publications", label: "저서", fallback: "저서" },
   { key: "media", label: "미디어", fallback: "미디어" },
   { key: "awards", label: "수상·자격증", fallback: "수상 · 자격증" },
+  { key: "changelog", label: "변경 이력", fallback: "변경 이력" },
 ];
 
 export default function AdminTitles() {

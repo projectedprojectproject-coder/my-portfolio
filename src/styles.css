@@ -884,6 +884,141 @@
   }
 
   /* =========================================================
+     과제 (HTML 게임을 페이지 안에서 플레이 + 확대)
+     ========================================================= */
+  .assign-list { display: flex; flex-direction: column; gap: 24px; }
+  .game-stage {
+    margin-top: 16px;
+    aspect-ratio: 4 / 3;
+    max-height: 78vh;
+  }
+  .game-frame {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: #1b120a;
+    border: 1px solid var(--rule-strong);
+  }
+  .game-iframe {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    background: #1b120a;
+  }
+  /* 확대: 화면 전체로 키운다. body::before/::after(그레인·비네트, z-index 9998/9999)보다
+     위에 두어 게임 화면이 필름 효과로 탁해지지 않게 한다. */
+  .game-frame.is-expanded {
+    position: fixed;
+    inset: 0;
+    z-index: 10001;
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh;
+    border: 0;
+  }
+  .game-start-wrap {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    background: radial-gradient(ellipse at 50% 30%, #3d2e1c 0%, #1b120a 100%);
+  }
+  .game-btn,
+  .game-toggle {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    letter-spacing: 0.04em;
+    min-height: 40px;
+    padding: 9px 18px;
+    cursor: pointer;
+    color: var(--accent-ink);
+    background: var(--accent);
+    border: 1px solid var(--accent);
+  }
+  .game-btn:hover { filter: brightness(1.1); }
+  .game-btn.ghost {
+    color: #f4ead6;
+    background: transparent;
+    border-color: rgba(244, 234, 214, 0.45);
+  }
+  .game-btn.ghost:hover { border-color: #f4ead6; filter: none; }
+  .game-toggle {
+    position: absolute;
+    top: max(10px, env(safe-area-inset-top));
+    right: max(10px, env(safe-area-inset-right));
+    z-index: 2;
+    color: #f4ead6;
+    background: rgba(20, 12, 5, 0.72);
+    border-color: rgba(244, 234, 214, 0.45);
+  }
+  .game-toggle:hover { background: rgba(20, 12, 5, 0.92); }
+  .assign-controls {
+    font-family: var(--font-mono);
+    font-size: 0.74rem !important;
+    letter-spacing: 0.03em;
+    color: var(--ink-faint) !important;
+  }
+  @media (max-width: 760px) {
+    .game-stage { aspect-ratio: 3 / 4; max-height: 75vh; }
+  }
+
+  /* =========================================================
+     변경 이력 (src/changelog.js 를 그대로 보여줌)
+     ========================================================= */
+  .changelog-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .changelog-item {
+    display: grid;
+    grid-template-columns: 112px minmax(0, 1fr);
+    gap: 16px;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .changelog-item:first-child { padding-top: 0; }
+  .changelog-date {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    letter-spacing: 0.04em;
+    color: var(--accent);
+    font-variant-numeric: tabular-nums;
+    padding-top: 0.35em;
+  }
+  .changelog-title {
+    margin: 0 0 6px;
+    font-size: 1.05rem;
+    line-height: 1.4;
+  }
+  .changelog-body ul {
+    margin: 0;
+    padding-left: 1.1em;
+    color: var(--ink-soft);
+    font-size: 0.93rem;
+  }
+  .changelog-body li { margin: 2px 0; }
+  .changelog-more {
+    margin-top: 22px;
+    padding: 0 0 2px;
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    letter-spacing: 0.03em;
+    color: var(--ink);
+    background: none;
+    border: 0;
+    border-bottom: 1px solid var(--rule-strong);
+    cursor: pointer;
+    transition: color 0.15s ease, border-color 0.15s ease;
+  }
+  .changelog-more:hover { color: var(--accent); border-color: var(--accent); }
+
+  /* =========================================================
      연락처
      ========================================================= */
   .contact-block {
@@ -1010,6 +1145,9 @@
     .about-layout { grid-template-columns: minmax(0, 1fr); }
     .credential-item { grid-template-columns: minmax(0, 1fr); gap: 4px; }
     .credential-meta { order: 3; white-space: normal; }
+    .changelog-item { grid-template-columns: minmax(0, 1fr); gap: 4px; }
+    .changelog-date { padding-top: 0; }
+    .changelog-more { padding: 12px 0 4px; }
     .credential-title { overflow-wrap: anywhere; }
 
     /* 필름 눈금줄 — 긴 라벨이 페이지를 옆으로 밀어내던 문제.
