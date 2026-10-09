@@ -28,23 +28,43 @@ export const nav = [
   { id: "contact", label: "연락처" },
 ];
 
+// 소개 섹션 — 클래퍼보드 이미지의 글을 코드로 옮긴 것.
+// 요청에 따라 이미지 속 단어를 한 글자도 바꾸지 않았다. 그래서 이미지에 적혀 있는
+// "적접"(두 번째 문단), "유튜보"(FOCUS 목록)도 그대로 둔 것이다 — 고치려면 여기서 바꾸면 된다.
+// main 의 한 줄 한 줄은 이미지의 줄바꿈 위치다(넓은 화면에서만 적용, 좁은 화면에선 자동 줄바꿈).
 export const about = {
-  paragraphs: [
-    "성균관대학교 일반대학원 영상학과(Film, Television and Multimedia) 석사과정에 재학 중이며, 2028년 졸업을 목표로 하고 있습니다.",
-    "AI를 활용한 영상 제작 실무서 「AI와 할리우드 공식으로 만드는 방구석 시네마틱」을 집필·출간한 바 있으며, 연구와 창작을 함께 병행하고 있습니다.",
+  main: [
+    [
+      "영상 연출과 편집 등 다양한 제작 경험을 바탕으로",
+      "생성형 AI 영상 콘텐츠, 유사과학 담론, 유튜브 추천 환경을",
+      "연구하며 기술이 영상의 표현과 시청 경험을 어떻게 바꾸는지",
+      "살펴보고 있습니다.",
+    ],
+    [
+      "영상 제작부터 학술 연구와 집필까지, 새로운 기술과 이야기가",
+      "만나는 지점에 관심이 많습니다. 적접 만들고 분석하며 얻은",
+      "경험을 새로운 아이디어로 발전시키는 일을 좋아합니다.",
+      "서로 다른 시선과 경험을 나누며 더 좋은 결과를 만들어갈 수 있는",
+      "협업을 기대합니다.",
+    ],
   ],
-  slate: [
-    {
-      term: "Program",
-      // <br> 위치를 배열로 표현
-      lines: ["성균관대학교 일반대학원", "영상학과 (Film, TV & Multimedia)"],
-    },
-    { term: "Status", lines: ["석사과정 · 2028년 졸업 예정"] },
-    {
-      term: "Focus",
-      lines: ["비판적 담론분석 · AI 슬롭 콘텐츠 · 유튜브 추천 알고리즘"],
-    },
+  program: {
+    ko: "성균관대학교 대학원 영상학과",
+    en: [
+      "Sungkyunkwan University Graduate School",
+      "Department of Film, Television and Multimedia",
+    ],
+  },
+  // 문자열 = 한 줄 항목, 객체 = 이름 + 그 아래 들여쓴 작품명
+  focus: [
+    "생성형 AI 영상 콘텐츠",
+    "유사과학 담론 분석",
+    "유튜보 추천 알고리즘",
+    "검증비용 전가 모형",
+    { name: "Norman Fairclough", work: "Discourse and Social Change" },
+    { name: "Julian Hanebeck", work: "Understanding Metalepsis" },
   ],
+  status: "석사과정 재학 중",
 };
 
 export const research = [
