@@ -5,7 +5,6 @@ import Featured from "./sections/Featured";
 import Research from "./sections/Research";
 import Projects from "./sections/Projects";
 import Assignments from "./sections/Assignments";
-import PromptDoc from "./sections/PromptDoc";
 import Publications from "./sections/Publications";
 import Media from "./sections/Media";
 import Awards from "./sections/Awards";
@@ -26,7 +25,6 @@ export default function App() {
         <Research />
         <Projects />
         <Assignments />
-        <PromptDoc />
         <Publications />
         <Media />
         <Awards />
