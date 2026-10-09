@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { assignments } from "../data";
+import { safeUrl } from "../lib/safeUrl";
+import { useAssignmentsList } from "../lib/useAssignmentsList";
 import { useSectionTitles } from "../lib/useSectionTitles";
 
 // 게임은 iframe 으로 띄우되 sandbox="allow-scripts" 만 준다.
@@ -39,14 +41,20 @@ function GameCard({ item }) {
     setExpanded(expand);
   }
 
+  // 관리자가 입력한 주소라 그대로 쓰지 않고 한 번 거른다 (javascript:, data: 등 차단).
+  // 게임(iframe)은 https 또는 사이트 안 경로만, 링크는 http(s) 도 허용.
+  const gameSrc = safeUrl(item.src, { httpsOnly: true });
+  const sourceHref = safeUrl(item.source);
+
   return (
     <article className="idx-card assign-card">
-      <span className="idx-tag">{item.tag}</span>
+      {item.tag && <span className="idx-tag">{item.tag}</span>}
       <h3>{item.title}</h3>
       {item.subtitle && <p className="idx-role">{item.subtitle}</p>}
-      {item.description && <p>{item.description}</p>}
+      {item.description && <p className="assign-desc">{item.description}</p>}
 
       {/* game-stage 는 자리만 잡는다. 확대해도 iframe 은 그대로라 게임이 다시 시작되지 않는다. */}
+      {gameSrc && (
       <div className="game-stage">
         <div
           className={`game-frame${expanded ? " is-expanded" : ""}`}
@@ -59,7 +67,7 @@ function GameCard({ item }) {
               <iframe
                 ref={frameRef}
                 className="game-iframe"
-                src={item.src}
+                src={gameSrc}
                 title={item.title}
                 sandbox="allow-scripts"
               />
@@ -84,12 +92,13 @@ function GameCard({ item }) {
           )}
         </div>
       </div>
+      )}
 
-      {item.controls && <p className="assign-controls">{item.controls}</p>}
-      {item.source && (
+      {gameSrc && item.controls && <p className="assign-controls">{item.controls}</p>}
+      {sourceHref && (
         <a
           className="text-link"
-          href={item.source}
+          href={sourceHref}
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -102,6 +111,10 @@ function GameCard({ item }) {
 
 export default function Assignments() {
   const titles = useSectionTitles();
+  const list = useAssignmentsList();
+  // 로딩 중엔 비워 둔다 — 기본 과제를 먼저 보여주면 관리자가 고친 내용으로 바뀔 때 깜빡인다.
+  // 불러온 뒤 항목이 없으면(또는 조회 실패) 기본 과제를 보여준다.
+  const items = list === null ? [] : list.length > 0 ? list : assignments;
 
   return (
     <section id="assignments" className="section">
@@ -112,7 +125,7 @@ export default function Assignments() {
         <div>
           <h2>{titles.assignments || "과제"}</h2>
           <div className="assign-list">
-            {assignments.map((item) => (
+            {items.map((item) => (
               <GameCard item={item} key={item.id} />
             ))}
           </div>

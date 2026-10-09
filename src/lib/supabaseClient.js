@@ -43,5 +43,7 @@ export const FEATURED_TABLE = "featured";
 export const SECTION_TITLES_TABLE = "section_titles";
 // 수상·자격증 목록
 export const AWARDS_TABLE = "awards";
+// 과제 섹션 카드 (HTML 게임 등)
+export const ASSIGNMENTS_TABLE = "assignments";
 // Contact 안내 문구 + 이메일 — 싱글턴 테이블(id=1)
 export const CONTACT_TABLE = "contact";

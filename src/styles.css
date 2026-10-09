@@ -957,6 +957,7 @@
     border-color: rgba(244, 234, 214, 0.45);
   }
   .game-toggle:hover { background: rgba(20, 12, 5, 0.92); }
+  .assign-card p.assign-desc { white-space: pre-line; }
   .assign-controls {
     font-family: var(--font-mono);
     font-size: 0.74rem !important;

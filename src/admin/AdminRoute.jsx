@@ -7,6 +7,7 @@ import AdminLogin from "./AdminLogin";
 import AdminHero from "./AdminHero";
 import AdminFeatured from "./AdminFeatured";
 import AdminTitles from "./AdminTitles";
+import AdminAssignments from "./AdminAssignments";
 import AdminAwards from "./AdminAwards";
 import AdminContact from "./AdminContact";
 import AdminUpload from "./AdminUpload";
@@ -19,6 +20,7 @@ const TABS = [
   { key: "featured", label: "추천", Component: AdminFeatured },
   { key: "titles", label: "제목", Component: AdminTitles },
   { key: "content", label: "콘텐츠", Component: ContentEditor },
+  { key: "assignments", label: "과제", Component: AdminAssignments },
   { key: "awards", label: "수상·자격증", Component: AdminAwards },
   { key: "contact", label: "Contact", Component: AdminContact },
   { key: "media", label: "미디어 업로드", Component: AdminUpload },
