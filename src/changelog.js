@@ -9,6 +9,13 @@
 export const changelog = [
   {
     date: "2026-10-09",
+    title: "코스모 커피 배달을 Week 6 과제로 기록",
+    items: [
+      "코스모 커피 배달 카드의 라벨을 'Week 6', 부제를 'Structured System Prompt'로 바꿨습니다.",
+    ],
+  },
+  {
+    date: "2026-10-09",
     title: "과제에 '코스모 커피 배달' 게임 추가",
     items: [
       "커피 배달 게임을 우주 정거장 테마로 다시 만든 버전을 과제 섹션에서 플레이할 수 있습니다.",

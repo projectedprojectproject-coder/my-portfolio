@@ -2,14 +2,16 @@
 -- Supabase 대시보드 → SQL Editor 에서 실행하세요. (assignments_table.sql 을 먼저 실행해 둔 상태여야 합니다.)
 -- 같은 게임 주소의 카드가 이미 있으면 아무것도 넣지 않으므로, 두 번 실행해도 중복되지 않습니다.
 -- (SQL 대신 관리자 화면의 "과제" 탭에서 같은 내용을 직접 입력해 추가해도 됩니다.)
+-- 이미 예전 내용(Week 3 라벨)으로 들어가 있다면 이 파일이 아니라
+-- assignment_cosmo_coffee_week6.sql 을 실행해 고치세요 (이 파일은 이미 있으면 건드리지 않습니다).
 
 insert into public.assignments (position, tag, title, subtitle, description, controls, src, source)
 select
   coalesce((select max(position) from public.assignments), -1) + 1,
-  $t$수업 과제 · Week 3$t$,
+  $t$수업 과제 · Week 6$t$,
   $t$코스모 커피 배달$t$,
-  $t$커피 배달 게임을 우주 정거장 테마로 다시 만든 버전$t$,
-  $t$곰돌이가 우주 정거장 카페에서 커피 여섯 잔을 받아 여섯 이웃에게 배달하고, 카페로 돌아와 평가를 받는 작은 3D 게임입니다. 생명은 하트 3개이고, 3초 뒤 폭발하는 외계 고양이와 표시된 자리에 별을 떨어뜨리는 UFO를 피해야 합니다.$t$,
+  $t$Structured System Prompt$t$,
+  $t$커피 배달 게임을 우주 정거장 테마로 다시 만든 버전입니다. 곰돌이가 우주 정거장 카페에서 커피 여섯 잔을 받아 여섯 이웃에게 배달하고, 카페로 돌아와 평가를 받는 작은 3D 게임입니다. 생명은 하트 3개이고, 3초 뒤 폭발하는 외계 고양이와 표시된 자리에 별을 떨어뜨리는 UFO를 피해야 합니다.$t$,
   $t$이동 방향키 · WASD  /  커피 받기·전하기 E · Space  /  외계 고양이와 별똥별 피하기$t$,
   '/games/coffee-bootleg/index.html',
   'https://github.com/projectedprojectproject-coder/coffeegamebootleg'

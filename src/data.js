@@ -113,11 +113,11 @@ export const assignments = [
   },
   {
     id: "cosmo-coffee",
-    tag: "수업 과제 · Week 3",
+    tag: "수업 과제 · Week 6",
     title: "코스모 커피 배달",
-    subtitle: "커피 배달 게임을 우주 정거장 테마로 다시 만든 버전",
+    subtitle: "Structured System Prompt",
     description:
-      "곰돌이가 우주 정거장 카페에서 커피 여섯 잔을 받아 여섯 이웃에게 배달하고, 카페로 돌아와 평가를 받는 작은 3D 게임입니다. 생명은 하트 3개이고, 3초 뒤 폭발하는 외계 고양이와 표시된 자리에 별을 떨어뜨리는 UFO를 피해야 합니다.",
+      "커피 배달 게임을 우주 정거장 테마로 다시 만든 버전입니다. 곰돌이가 우주 정거장 카페에서 커피 여섯 잔을 받아 여섯 이웃에게 배달하고, 카페로 돌아와 평가를 받는 작은 3D 게임입니다. 생명은 하트 3개이고, 3초 뒤 폭발하는 외계 고양이와 표시된 자리에 별을 떨어뜨리는 UFO를 피해야 합니다.",
     controls: "이동 방향키 · WASD  /  커피 받기·전하기 E · Space  /  외계 고양이와 별똥별 피하기",
     src: "/games/coffee-bootleg/index.html",
     source: "https://github.com/projectedprojectproject-coder/coffeegamebootleg",
