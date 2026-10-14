@@ -1,6 +1,6 @@
 import { lazy, Suspense, useState } from "react";
 
-// "과제" 섹션의 Week 7 카드 — 한 카드 안에 PDF 2개와 사용한 마크다운(.md) 링크를 함께 둔다.
+// "과제" 섹션의 Week 6 카드(파일·변수 이름은 week7 그대로) — 한 카드 안에 PDF 2개와 사용한 마크다운(.md) 링크를 함께 둔다.
 // 파일은 public/docs/week7/ 에 있다.
 const PdfReader = lazy(() => import("../components/PdfReader"));
 
@@ -27,7 +27,7 @@ export default function Week7Card() {
 
   return (
     <article className="idx-card assign-card week7-card">
-      <span className="idx-tag">수업 과제 · Week 7</span>
+      <span className="idx-tag">수업 과제 · Week 6</span>
       <h3>라이즈 오브 티아맷 — D&amp;D 캠페인 기록</h3>
       <p className="idx-role">Claude가 DM과 플레이어를 맡아 진행한 캠페인</p>
       <p className="assign-desc">
@@ -35,7 +35,7 @@ export default function Week7Card() {
       </p>
 
       {/* PDF 2개와 .md 링크 2개를 한 블록에 */}
-      <div className="week7-files" role="group" aria-label="Week 7 자료">
+      <div className="week7-files" role="group" aria-label="Week 6 자료">
         {VERSIONS.map((v) => (
           <div className="week7-file" key={v.id}>
             <p className="week7-file-label">{v.label}</p>
