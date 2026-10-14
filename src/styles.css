@@ -1141,6 +1141,16 @@
     .pdf-reader { padding: 6px; max-height: 75vh; }
   }
 
+  /* Week 7 Figma 카드: 명함 2장 + 소개 이미지 + Figma 링크를 한 블록에 */
+  .figma-files { margin-top: 18px; border: 1px solid var(--rule-strong); }
+  .figma-cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; padding: 18px; }
+  .figma-cards figure { margin: 0; }
+  .figma-cards img { display: block; width: 100%; height: auto; border-radius: 4px; box-shadow: 0 8px 18px rgba(40, 24, 8, 0.28); }
+  .figma-cards figcaption { margin-top: 10px; font-family: var(--font-mono); font-size: 0.74rem; letter-spacing: 0.04em; color: var(--ink-faint); display: flex; gap: 12px; flex-wrap: wrap; }
+  .figma-links { padding: 16px 18px 18px; border-top: 1px solid var(--rule-strong); }
+  .figma-links p { margin: 0; }
+  @media (max-width: 760px) { .figma-cards { grid-template-columns: minmax(0, 1fr); } }
+
   .md-body {
     margin-top: 22px;
     padding-top: 20px;

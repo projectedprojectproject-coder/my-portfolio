@@ -5,6 +5,7 @@ import { useAssignmentsList } from "../lib/useAssignmentsList";
 import { useSectionTitles } from "../lib/useSectionTitles";
 import PromptDocCard from "./PromptDocCard";
 import Week7Card from "./Week7Card";
+import FigmaCard from "./FigmaCard";
 
 // 게임은 iframe 으로 띄우되 sandbox="allow-scripts" 만 준다.
 // → 게임 코드는 이 사이트와 다른 출처로 취급되어 관리자 로그인 정보 등
@@ -133,6 +134,7 @@ export default function Assignments() {
             {/* 문서 카드는 목록을 불러온 뒤에만 — 게임 카드보다 먼저 보였다가 밀려 내려가지 않게 */}
             {list !== null && <PromptDocCard />}
             {list !== null && <Week7Card />}
+            {list !== null && <FigmaCard />}
           </div>
         </div>
       </div>

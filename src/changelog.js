@@ -8,6 +8,13 @@
 
 export const changelog = [
   {
+    date: "2026-10-14",
+    title: "과제에 Week 7 추가 — Figma",
+    items: [
+      "포트폴리오 소개 이미지(PDF), 명함 앞면·뒷면(PNG), Figma 편집 링크를 한 블록에 올렸습니다.",
+    ],
+  },
+  {
     date: "2026-10-11",
     title: "과제에 Week 6 추가 — 라이즈 오브 티아맷 캠페인 기록",
     items: [
