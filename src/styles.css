@@ -1151,6 +1151,26 @@
   .figma-links p { margin: 0; }
   @media (max-width: 760px) { .figma-cards { grid-template-columns: minmax(0, 1fr); } }
 
+  /* Week 8 영상 생성 카드: PDF · 숏폼 영상 · 프롬프트 */
+  .week8-block { margin-top: 20px; padding-top: 16px; border-top: 1px dashed var(--rule-strong); }
+  .week8-block p { margin: 0; }
+  .week8-block .week7-file-title { margin: 4px 0 12px; }
+  .week8-video { display: block; width: 100%; max-width: 360px; max-height: 70vh; margin: 10px 0 12px; background: #000; border: 1px solid var(--rule-strong); }
+  .week8-prompt {
+    margin: 10px 0 14px;
+    padding: 14px 16px;
+    max-height: 340px;
+    overflow: auto;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    line-height: 1.7;
+    color: var(--ink-soft);
+    background: var(--paper);
+    border: 1px solid var(--rule-strong);
+  }
+
   .md-body {
     margin-top: 22px;
     padding-top: 20px;

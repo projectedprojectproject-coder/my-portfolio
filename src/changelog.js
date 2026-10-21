@@ -8,6 +8,14 @@
 
 export const changelog = [
   {
+    date: "2026-10-21",
+    title: "과제에 Week 8 추가 — 영상 생성",
+    items: [
+      "영상 생성 AI 툴을 활용한 인물 중심 숏폼 제작 과제를 올렸습니다.",
+      "워크플로우 PDF, 숏폼 영상, 사용한 프롬프트를 한 카드에 함께 두었습니다.",
+    ],
+  },
+  {
     date: "2026-10-14",
     title: "과제에 Week 7 추가 — Figma",
     items: [
