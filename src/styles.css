@@ -1151,6 +1151,58 @@
   .figma-links p { margin: 0; }
   @media (max-width: 760px) { .figma-cards { grid-template-columns: minmax(0, 1fr); } }
 
+  /* =========================================================
+     AI 펫 투어 (곰돌이) — 섹션을 스크롤하며 자막 + 내 목소리로 소개
+     ========================================================= */
+  .pet-launch, .pet-tour { position: fixed; z-index: 10002; right: max(14px, env(safe-area-inset-right)); bottom: max(14px, env(safe-area-inset-bottom)); }
+  .pet-launch {
+    display: flex; align-items: center; gap: 8px; cursor: pointer;
+    padding: 6px 16px 6px 8px; min-height: 52px;
+    font-family: var(--font-mono); font-size: 0.82rem; letter-spacing: 0.04em;
+    color: var(--accent-ink); background: var(--accent); border: 1px solid var(--accent); border-radius: 99px;
+    box-shadow: 0 8px 18px var(--shadow);
+  }
+  .pet-launch:hover { filter: brightness(1.1); }
+  .pet-avatar { width: 44px; height: 44px; flex: none; object-fit: contain; }
+  .pet-img.is-speaking { animation: pet-bounce 0.5s ease-in-out infinite; }
+  @keyframes pet-bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
+  .pet-mouth { transform-origin: 40px 57px; }
+  .pet-avatar.is-speaking .pet-mouth { animation: pet-talk 0.42s ease-in-out infinite; }
+  @keyframes pet-talk { 0%, 100% { transform: scaleY(0.5); } 50% { transform: scaleY(1.7); } }
+  .pet-tour {
+    display: flex; align-items: flex-end; gap: 8px;
+    width: min(460px, calc(100vw - 28px));
+  }
+  .pet-tour .pet-avatar { width: 64px; height: 64px; filter: drop-shadow(0 4px 6px var(--shadow)); }
+  .pet-bubble {
+    flex: 1; min-width: 0; padding: 14px 16px;
+    background: var(--paper-raised); color: var(--ink);
+    border: 1px solid var(--rule-strong); border-radius: 12px 12px 12px 2px;
+    box-shadow: 0 10px 24px var(--shadow);
+  }
+  .pet-bubble p { margin: 0; }
+  .pet-step { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.06em; color: var(--accent); }
+  .pet-text { margin-top: 6px !important; font-size: 0.9rem; line-height: 1.65; color: var(--ink-soft); max-height: 32vh; overflow: auto; }
+  .pet-note { margin-top: 6px !important; font-size: 0.74rem; color: var(--ink-faint); }
+  .pet-controls { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 10px; }
+  .pet-controls button {
+    min-height: 36px; padding: 6px 12px; cursor: pointer;
+    font-family: var(--font-mono); font-size: 0.78rem;
+    color: var(--ink); background: transparent; border: 1px solid var(--rule-strong);
+  }
+  .pet-controls button:hover:not(:disabled) { background: var(--accent-soft); }
+  .pet-controls button:disabled { opacity: 0.4; cursor: default; }
+  .pet-controls .pet-close { margin-left: auto; color: var(--accent-ink); background: var(--accent); border-color: var(--accent); }
+  .tour-spot { outline: 3px solid var(--accent); outline-offset: -3px; transition: outline-color 0.3s; scroll-margin-top: 64px; }
+  @media (max-width: 760px) {
+    .pet-tour { right: 8px; left: 8px; width: auto; }
+    .pet-tour .pet-avatar { width: 52px; height: 52px; }
+    .pet-text { max-height: 24vh; font-size: 0.85rem; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .pet-avatar.is-speaking .pet-mouth, .pet-img.is-speaking { animation: none; }
+  }
+
   /* Week 8 영상 생성 카드: PDF · 숏폼 영상 · 프롬프트 */
   .week8-block { margin-top: 20px; padding-top: 16px; border-top: 1px dashed var(--rule-strong); }
   .week8-block p { margin: 0; }
