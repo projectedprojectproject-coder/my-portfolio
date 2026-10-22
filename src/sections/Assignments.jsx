@@ -7,6 +7,7 @@ import PromptDocCard from "./PromptDocCard";
 import Week7Card from "./Week7Card";
 import FigmaCard from "./FigmaCard";
 import Week8Card from "./Week8Card";
+import BloopersCard from "./BloopersCard";
 
 // 게임은 iframe 으로 띄우되 sandbox="allow-scripts" 만 준다.
 // → 게임 코드는 이 사이트와 다른 출처로 취급되어 관리자 로그인 정보 등
@@ -137,6 +138,7 @@ export default function Assignments() {
             {list !== null && <Week7Card />}
             {list !== null && <FigmaCard />}
             {list !== null && <Week8Card />}
+            {list !== null && <BloopersCard />}
           </div>
         </div>
       </div>

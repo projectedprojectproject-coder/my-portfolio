@@ -8,6 +8,13 @@
 
 export const changelog = [
   {
+    date: "2026-10-22",
+    title: "과제에 Week 8 (bloopers) 추가",
+    items: [
+      "영상 생성 과정에서 나온 영상 5개를 올렸습니다.",
+    ],
+  },
+  {
     date: "2026-10-21",
     title: "과제에 Week 8 추가 — 영상 생성",
     items: [
