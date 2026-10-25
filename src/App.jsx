@@ -10,7 +10,6 @@ import Media from "./sections/Media";
 import Awards from "./sections/Awards";
 import Changelog from "./sections/Changelog";
 import Contact from "./sections/Contact";
-import TourPet from "./tour/TourPet";
 import { profile } from "./data";
 
 export default function App() {
@@ -37,8 +36,6 @@ export default function App() {
         <span>{profile.footerLeft}</span>
         <span>{profile.footerRight}</span>
       </div>
-
-      <TourPet />
     </>
   );
 }

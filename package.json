@@ -7,7 +7,6 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "oxlint",
-    "tour:voice": "node scripts/generate-tour-voice.mjs",
     "preview": "vite preview"
   },
   "dependencies": {
