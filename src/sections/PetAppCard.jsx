@@ -1,14 +1,12 @@
 // "과제" 섹션의 데스크톱 펫 카드 — 이 포트폴리오를 내 목소리로 안내하는 앱(Portfolio PET)의 설치 파일 내려받기.
-// 설치 파일은 GitHub Releases 에 올려 두고 여기서는 링크만 건다. 새 버전을 내면 APP.version 만 바꾸면 된다.
+// 설치 파일은 GitHub Releases 에 올려 두고, 여기서는 "최신 릴리스" 페이지로 연결한다.
+// → 새 버전을 릴리스에 올리기만 하면 사이트를 다시 배포하지 않아도 자동으로 최신 설치 파일로 이어진다.
 const REPO = "https://github.com/projectedprojectproject-coder/appforwebsite";
 const APP = {
-  version: "0.1.0",
-  size: "111MB",
+  size: "약 111MB",
   icon: "/docs/pet/icon.png",
 };
-const FILE = `PortfolioPET-Setup-${APP.version}.exe`;
-const DOWNLOAD = `${REPO}/releases/download/v${APP.version}/${FILE}`;
-const RELEASE = `${REPO}/releases/tag/v${APP.version}`;
+const LATEST = `${REPO}/releases/latest`;
 const GUIDE = `${REPO}/blob/main/${encodeURIComponent("사용가이드.md")}`;
 
 export default function PetAppCard() {
@@ -27,11 +25,8 @@ export default function PetAppCard() {
       </div>
 
       <div className="promptdoc-actions">
-        <a className="promptdoc-btn petapp-download" href={DOWNLOAD}>
-          설치 파일 내려받기 ↓
-        </a>
-        <a className="text-link" href={RELEASE} target="_blank" rel="noopener noreferrer">
-          릴리스 안내 <span className="arrow">→</span>
+        <a className="promptdoc-btn petapp-download" href={LATEST} target="_blank" rel="noopener noreferrer">
+          설치 파일 내려받기 →
         </a>
         <a className="text-link" href={GUIDE} target="_blank" rel="noopener noreferrer">
           사용 가이드 <span className="arrow">→</span>
@@ -42,10 +37,10 @@ export default function PetAppCard() {
       </div>
 
       <p className="assign-controls petapp-meta">
-        Windows 10·11 (64비트) · v{APP.version} · {APP.size}
+        Windows 10·11 (64비트) · 최신 버전 · {APP.size}
       </p>
       <p className="assign-controls">
-        서명되지 않은 설치 파일이라 "Windows의 PC 보호" 창이 뜨면 '추가 정보 → 실행'을 누르세요. 안내는 바로 쓸 수 있고, 질문에 대답하는 기능은 따로 API 키가 필요합니다.
+        버튼을 누르면 최신 릴리스 페이지가 열립니다. 맨 아래 Assets 의 PortfolioPET-Setup-…exe 를 받아 실행하세요. 서명되지 않은 설치 파일이라 "Windows의 PC 보호" 창이 뜨면 '추가 정보 → 실행'을 누르면 됩니다.
       </p>
     </article>
   );
