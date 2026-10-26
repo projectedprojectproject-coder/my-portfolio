@@ -1178,6 +1178,17 @@
   .bloopers-grid figcaption { margin-top: 8px; font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.06em; color: var(--ink-faint); display: flex; gap: 10px; flex-wrap: wrap; }
   @media (max-width: 760px) { .bloopers-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; } }
 
+  /* 데스크톱 펫(Portfolio PET) 카드: 아이콘 + 설명 + 설치 파일 내려받기 */
+  .petapp-head { display: flex; gap: 18px; align-items: flex-start; }
+  .petapp-head h3 { margin-top: 0; }
+  .petapp-icon { flex: none; width: 96px; height: 96px; object-fit: contain; }
+  .petapp-download { display: inline-flex; align-items: center; text-decoration: none; }
+  .petapp-meta { margin-top: 14px !important; }
+  @media (max-width: 760px) {
+    .petapp-head { flex-direction: column; gap: 10px; }
+    .petapp-icon { width: 72px; height: 72px; }
+  }
+
   .md-body {
     margin-top: 22px;
     padding-top: 20px;

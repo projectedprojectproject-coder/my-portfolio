@@ -8,6 +8,14 @@
 
 export const changelog = [
   {
+    date: "2026-10-26",
+    title: "과제에 데스크톱 펫 'Portfolio PET' 추가",
+    items: [
+      "이 포트폴리오를 제 목소리로 안내하고, 발표 뒤 질문에 AI가 제 목소리로 대답하는 고양이 데스크톱 앱을 올렸습니다.",
+      "과제 섹션 맨 아래 카드에서 Windows 설치 파일을 내려받고, 사용 가이드와 소스 코드를 볼 수 있습니다.",
+    ],
+  },
+  {
     date: "2026-10-22",
     title: "과제에 Week 8 (bloopers) 추가",
     items: [
