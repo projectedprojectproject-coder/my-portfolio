@@ -16,6 +16,13 @@ export const changelog = [
     ],
   },
   {
+    date: "2026-10-26",
+    title: "Bloopers에 영상 1개 추가",
+    items: [
+      "Week 8 (bloopers)에 영상 CLIP 06을 추가했습니다.",
+    ],
+  },
+  {
     date: "2026-10-22",
     title: "과제에 Week 8 (bloopers) 추가",
     items: [

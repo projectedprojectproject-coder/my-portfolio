@@ -2,7 +2,7 @@
 // 파일은 public/docs/week8-bloopers/ 에 있다. 처음엔 영상을 받지 않고(preload="none"),
 // 재생을 누를 때 불러와 데이터와 로딩 시간을 아낀다.
 const DIR = "/docs/week8-bloopers/";
-const CLIPS = [1, 2, 3, 4, 5].map((n) => ({ n, src: `${DIR}blooper-${n}.mp4` }));
+const CLIPS = [1, 2, 3, 4, 5, 6].map((n) => ({ n, src: `${DIR}blooper-${n}.mp4` }));
 
 export default function BloopersCard() {
   return (
