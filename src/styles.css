@@ -1151,6 +1151,31 @@
   .figma-links p { margin: 0; }
   @media (max-width: 760px) { .figma-cards { grid-template-columns: minmax(0, 1fr); } }
 
+  /* Week 13 SNS 대댓글 자동화 카드: 파이프라인 도식 + 역할 + 안전 장치 */
+  .w13-flow { list-style: none; margin: 16px 0 4px; padding: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; counter-reset: none; }
+  .w13-flow li { position: relative; display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+  .w13-flow li:not(:last-child)::after { content: "→"; position: absolute; right: -9px; top: 9px; font-family: var(--font-mono); color: var(--accent); font-size: 0.8rem; }
+  .w13-node { font-family: var(--font-mono); font-size: 0.8rem; padding: 8px 6px; text-align: center; border: 1px solid var(--accent); color: var(--accent); background: var(--paper); }
+  .w13-node b { font-weight: 700; }
+  .w13-note { font-size: 0.72rem; line-height: 1.4; color: var(--ink-faint); text-align: center; }
+  .w13-loop { font-family: var(--font-mono); font-size: 0.68rem; color: var(--accent); text-align: center; }
+  .w13-block { margin-top: 18px; padding-top: 14px; border-top: 1px dashed var(--rule-strong); }
+  .w13-block p { margin: 0; }
+  .w13-agents { margin: 10px 0 0; display: grid; gap: 10px; }
+  .w13-agents dt { font-family: var(--font-mono); font-size: 0.8rem; color: var(--ink); }
+  .w13-agents dd { margin: 2px 0 0; font-size: 0.9rem; line-height: 1.65; color: var(--ink-soft); }
+  .w13-list { margin: 10px 0 0; padding-left: 1.2em; font-size: 0.9rem; line-height: 1.7; color: var(--ink-soft); }
+  .w13-chips { list-style: none; margin: 10px 0 8px; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+  .w13-chips li { font-family: var(--font-mono); font-size: 0.74rem; padding: 3px 12px; border: 1px solid var(--rule-strong); border-radius: 99px; color: var(--ink-soft); }
+  .w13-small { font-size: 0.82rem; line-height: 1.6; color: var(--ink-faint); margin-bottom: 14px !important; }
+  @media (max-width: 760px) {
+    .w13-flow { grid-template-columns: minmax(0, 1fr); gap: 12px; }
+    .w13-flow li { flex-direction: row; align-items: center; gap: 10px; }
+    .w13-flow li:not(:last-child)::after { content: none; }
+    .w13-node { flex: none; min-width: 84px; }
+    .w13-note, .w13-loop { text-align: left; }
+  }
+
   /* Week 8 영상 생성 카드: PDF · 숏폼 영상 · 프롬프트 */
   .week8-block { margin-top: 20px; padding-top: 16px; border-top: 1px dashed var(--rule-strong); }
   .week8-block p { margin: 0; }
