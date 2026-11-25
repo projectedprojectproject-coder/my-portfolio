@@ -1176,6 +1176,13 @@
     .w13-note, .w13-loop { text-align: left; }
   }
 
+  /* Week 11 자동 영상 제작 카드: 파이프라인 단계 목록 */
+  .w11-steps { list-style: none; margin: 10px 0 0; padding: 0; display: grid; gap: 12px; }
+  .w11-steps li { display: grid; grid-template-columns: 28px minmax(0, 1fr); gap: 12px; align-items: start; }
+  .w11-n { width: 28px; height: 28px; display: grid; place-items: center; font-family: var(--font-mono); font-size: 0.78rem; color: var(--accent); border: 1px solid var(--accent); border-radius: 50%; background: var(--paper); }
+  .w11-name { font-family: var(--font-mono); font-size: 0.8rem; color: var(--ink); overflow-wrap: anywhere; }
+  .w11-text { margin: 2px 0 0; font-size: 0.9rem; line-height: 1.65; color: var(--ink-soft); }
+
   /* Week 8 영상 생성 카드: PDF · 숏폼 영상 · 프롬프트 */
   .week8-block { margin-top: 20px; padding-top: 16px; border-top: 1px dashed var(--rule-strong); }
   .week8-block p { margin: 0; }

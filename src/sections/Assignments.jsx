@@ -9,6 +9,7 @@ import FigmaCard from "./FigmaCard";
 import Week8Card from "./Week8Card";
 import BloopersCard from "./BloopersCard";
 import PetAppCard from "./PetAppCard";
+import Week11Card from "./Week11Card";
 import Week13Card from "./Week13Card";
 
 // 게임은 iframe 으로 띄우되 sandbox="allow-scripts" 만 준다.
@@ -142,6 +143,7 @@ export default function Assignments() {
             {list !== null && <Week8Card />}
             {list !== null && <BloopersCard />}
             {list !== null && <PetAppCard />}
+            {list !== null && <Week11Card />}
             {list !== null && <Week13Card />}
           </div>
         </div>
